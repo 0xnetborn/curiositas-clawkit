@@ -4,15 +4,19 @@ import FeaturesSection from '@/components/FeaturesSection';
 import SquadSection from '@/components/SquadSection';
 import WorkflowSection from '@/components/WorkflowSection';
 import PricingSection from '@/components/PricingSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import LoadingScreen from '@/components/LoadingScreen';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
+      <LoadingScreen />
       <Navbar />
       <HeroSection />
       <FeaturesSection />
       <SquadSection />
       <WorkflowSection />
+      <TestimonialsSection />
       <PricingSection />
 
       {/* Final CTA */}
