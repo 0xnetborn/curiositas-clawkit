@@ -9,7 +9,7 @@ import LoadingScreen from '@/components/LoadingScreen';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-zinc-950 text-white">
+    <main className="min-h-screen bg-black text-white selection:bg-emerald-500/30">
       <LoadingScreen />
       <Navbar />
       <HeroSection />
@@ -19,39 +19,64 @@ export default function Home() {
       <TestimonialsSection />
       <PricingSection />
 
-      {/* Final CTA */}
-      <section className="py-32 px-6 bg-gradient-to-t from-amber-500/10 to-zinc-950">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Pronto a <span className="text-amber-400">decollar</span>?
+      {/* Final CTA - Tech Style */}
+      <section className="py-32 px-6 border-t border-white/5 bg-grid relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 border border-emerald-500/20 bg-emerald-500/5 mb-8">
+            <span className="w-1.5 h-1.5 bg-emerald-500 animate-pulse" />
+            <span className="text-[10px] font-mono text-emerald-500 tracking-widest uppercase">System Ready</span>
+          </div>
+
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 text-white">
+            Initialize <span className="text-white/40">Workspace</span>
           </h2>
-          <p className="text-xl text-zinc-400 mb-10">
-            Attiva il tuo workspace in pochi minuti.<br />
-            Scegli un pack, configura, e lascia lavorare il tuo squad AI.
+          
+          <p className="text-lg text-white/40 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
+            Deploy your AI squad in seconds. No configuration required.<br />
+            Enterprise-grade orchestration out of the box.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold text-lg hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-300 transform hover:scale-105">
-              Inizia Ora - Gratis
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <button className="group relative px-8 py-4 bg-white text-black font-medium text-sm tracking-wide overflow-hidden w-full sm:w-auto">
+              <div className="absolute inset-0 bg-zinc-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+              <span className="relative z-10 group-hover:text-black transition-colors uppercase">Start Deployment</span>
             </button>
-            <button className="px-8 py-4 rounded-xl bg-zinc-800 text-white font-semibold text-lg border border-zinc-700 hover:bg-zinc-700 transition-all duration-300">
-              Contattaci
+            
+            <button className="group px-8 py-4 border border-white/10 text-white/60 font-medium text-sm tracking-wide hover:text-white hover:border-white/40 transition-all uppercase w-full sm:w-auto">
+              Talk to Sales
             </button>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-6 border-t border-zinc-800/50">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">C</span>
-            </div>
-            <span className="font-semibold">Curiositas Studio</span>
+      {/* Footer - Tech Style */}
+      <footer className="py-12 px-6 border-t border-white/10 bg-black">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex items-center gap-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-white/40">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="font-mono text-xs text-white/40 tracking-widest uppercase">
+              Curiositas Studio © 2026
+            </span>
           </div>
-          <p className="text-zinc-500 text-sm">
-            © 2026 Curiositas Studio. Crafted with 🦝 & ⚡
-          </p>
+
+          <div className="flex gap-8">
+            {['Twitter', 'GitHub', 'Discord'].map((social) => (
+              <a key={social} href="#" className="text-xs font-mono text-white/40 hover:text-emerald-500 transition-colors uppercase">
+                {social}
+              </a>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span className="text-xs font-mono text-white/40 tracking-wider">ALL SYSTEMS OPERATIONAL</span>
+          </div>
         </div>
       </footer>
     </main>
