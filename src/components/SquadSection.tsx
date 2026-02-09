@@ -3,83 +3,69 @@
 import { useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 
-interface SquadMember {
-  name: string;
-  role: string;
-  icon: string;
-  pack: 'marketing' | 'business';
-}
-
-const squadMembers: SquadMember[] = [
-  // Marketing Squad
-  { name: 'Athena', role: 'Strategist', icon: '🦉', pack: 'marketing' },
-  { name: 'Calliope', role: 'Writer', icon: '✍️', pack: 'marketing' },
-  { name: 'Themis', role: 'Quality Gate', icon: '⚖️', pack: 'marketing' },
-  { name: 'Hermes', role: 'Amplifier', icon: '📢', pack: 'marketing' },
-  { name: 'Chronos', role: 'Analytics', icon: '📊', pack: 'marketing' },
-  { name: 'Daedalus', role: 'PM', icon: '🏗️', pack: 'marketing' },
-  // Business Squad
-  { name: 'Hera', role: 'Operator', icon: '👑', pack: 'business' },
-  { name: 'Argus', role: 'Research', icon: '👁️', pack: 'business' },
-  { name: 'Prometheus', role: 'Proposals', icon: '🔥', pack: 'business' },
-  { name: 'Hestia', role: 'Client Triage', icon: '🏠', pack: 'business' },
-  { name: 'Heracles', role: 'Unblocker', icon: '💪', pack: 'business' },
-  { name: 'Mnemosyne', role: 'Reports', icon: '📝', pack: 'business' },
+const agents = [
+  { name: 'ATHENA', role: 'STRATEGIC CORE', type: 'LOGIC', status: 'ONLINE' },
+  { name: 'CALLIOPE', role: 'GENERATIVE ENGINE', type: 'CREATIVE', status: 'IDLE' },
+  { name: 'THEMIS', role: 'QUALITY GUARD', type: 'AUDIT', status: 'ACTIVE' },
+  { name: 'HERMES', role: 'DISTRIBUTION NODE', type: 'NETWORK', status: 'WAITING' },
+  { name: 'CHRONOS', role: 'ANALYTICS MAIN', type: 'DATA', status: 'PROCESSING' },
+  { name: 'DAEDALUS', role: 'PROJECT MANAGER', type: 'CONTROL', status: 'ONLINE' },
+  { name: 'HERA', role: 'OPS CONTROLLER', type: 'SYSTEM', status: 'ONLINE' },
+  { name: 'ARGUS', role: 'RESEARCH UNIT', type: 'SCANNER', status: 'ACTIVE' },
+  { name: 'PROMETHEUS', role: 'OUTPUT GENERATOR', type: 'BUILDER', status: 'IDLE' },
+  { name: 'HESTIA', role: 'CLIENT INTERFACE', type: 'RELAY', status: 'WAITING' },
+  { name: 'HERACLES', role: 'TASK RESOLVER', type: 'WORKER', status: 'BUSY' },
+  { name: 'MNEMOSYNE', role: 'MEMORY ARCHIVE', type: 'STORAGE', status: 'ONLINE' },
 ];
 
 export default function SquadSection() {
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const grid = gridRef.current;
-    if (!grid) return;
+    if (!gridRef.current) return;
 
-    // Stagger animation for all members
-    animate(grid.children, {
+    animate(gridRef.current.children, {
       opacity: [0, 1],
-      scale: [0.8, 1],
-      delay: stagger(80),
+      scale: [0.9, 1],
+      delay: stagger(50, { grid: [4, 3], from: 'center' }),
       ease: 'outExpo',
-      duration: 600,
+      duration: 800,
     });
   }, []);
 
   return (
-    <section className="py-32 px-6 bg-zinc-900">
+    <section className="py-32 px-6 bg-black border-t border-white/5">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Il tuo <span className="text-amber-400">Squad AI</span>
-          </h2>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-            12 agenti specializzati, ognuno con un ruolo preciso.<br />
-            L'intelligenza che lavora come un vero team.
-          </p>
+        <div className="flex items-end justify-between mb-16">
+          <div>
+            <h2 className="text-sm font-mono text-white/40 tracking-widest uppercase mb-2">/// ACTIVE UNITS</h2>
+            <h3 className="text-3xl font-medium text-white">Neural Squad</h3>
+          </div>
+          <div className="hidden md:flex gap-2">
+            <span className="w-1 h-1 bg-white/20" />
+            <span className="w-1 h-1 bg-white/20" />
+            <span className="w-1 h-1 bg-white/20" />
+          </div>
         </div>
 
-        <div
-          ref={gridRef}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
-        >
-          {squadMembers.map((member, i) => (
-            <div
-              key={i}
-              className="group p-4 rounded-xl bg-zinc-800/30 border border-zinc-700/30 hover:border-zinc-600/50 transition-all duration-300 text-center opacity-0 cursor-pointer"
-            >
-              <div className="text-3xl mb-2 transform group-hover:scale-110 transition-transform duration-300">
-                {member.icon}
+        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {agents.map((agent, i) => (
+            <div key={i} className="group relative p-6 bg-white/5 border border-white/5 hover:border-white/20 transition-colors">
+              <div className="flex justify-between items-start mb-8">
+                <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                <span className="text-[10px] font-mono text-white/30">{agent.type}</span>
               </div>
-              <h4 className="text-sm font-semibold text-white">{member.name}</h4>
-              <p className="text-xs text-zinc-500">{member.role}</p>
-              <span
-                className={`inline-block mt-2 px-2 py-0.5 text-[10px] font-medium rounded-full ${
-                  member.pack === 'marketing'
-                    ? 'bg-emerald-500/20 text-emerald-400'
-                    : 'bg-violet-500/20 text-violet-400'
-                }`}
-              >
-                {member.pack === 'marketing' ? 'Marketing' : 'Business'}
-              </span>
+              
+              <div className="space-y-1">
+                <h4 className="text-lg font-medium text-white tracking-tight group-hover:text-emerald-400 transition-colors">
+                  {agent.name}
+                </h4>
+                <p className="text-xs font-mono text-white/50">{agent.role}</p>
+              </div>
+
+              {/* Technical Corners */}
+              <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
         </div>
