@@ -64,7 +64,7 @@ export default function HeroSection() {
           ref={titleRef}
           className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-tight opacity-0"
         >
-          Curiositas <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">ClawKit</span>
+          Curio<span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">Kit</span>
         </h1>
         
         <p 

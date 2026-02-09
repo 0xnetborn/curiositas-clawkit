@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { animate } from 'animejs';
+import Image from 'next/image';
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
@@ -25,14 +26,16 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-4 group cursor-pointer">
-          {/* Logo SVG */}
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-white transition-transform group-hover:scale-110">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <div className="relative w-8 h-8 transition-transform group-hover:scale-110">
+            <Image 
+              src="/logo.webp" 
+              alt="CurioKit Logo" 
+              fill 
+              className="object-contain invert opacity-80 group-hover:opacity-100 transition-opacity"
+            />
+          </div>
           <span className="font-mono text-sm tracking-widest text-white/80 group-hover:text-white transition-colors">
-            CURIOSITAS
+            CURIOKIT
           </span>
         </div>
 
