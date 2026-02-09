@@ -7,6 +7,7 @@ export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     if (!titleRef.current || !subtitleRef.current) return;
@@ -29,14 +30,41 @@ export default function HeroSection() {
       }
     });
 
-    // Stagger letters for title (requires splitting text into spans)
-    // For simplicity, we animate lines here, but advanced would be letter-by-letter
+    // Scramble Effect for Title
+    const finalBuffer = 'CurioKit';
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
+    
+    if (textRef.current) {
+      const proxy = { value: 0 };
+      
+      tl.add(proxy, {
+        value: 1,
+        duration: 1000,
+        ease: 'outExpo',
+        onUpdate: (anim) => {
+          if (!textRef.current) return;
+          const progress = anim.progress; // 0 to 1
+          const length = Math.floor(progress * finalBuffer.length);
+          let output = '';
+          
+          for (let i = 0; i < finalBuffer.length; i++) {
+            if (i < length) {
+              output += finalBuffer[i];
+            } else {
+              output += chars[Math.floor(Math.random() * chars.length)];
+            }
+          }
+          textRef.current.innerText = output;
+        }
+      }, 0); // Start immediately
+    }
+
     tl.add(titleRef.current, {
       opacity: [0, 1],
       translateY: [40, 0],
       scale: [0.95, 1],
       filter: ['blur(10px)', 'blur(0px)'],
-    })
+    }, 0)
     .add(subtitleRef.current, {
       opacity: [0, 1],
       translateY: [20, 0],
@@ -64,7 +92,9 @@ export default function HeroSection() {
           ref={titleRef}
           className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-tight opacity-0"
         >
-          Curio<span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">Kit</span>
+          <span ref={textRef} className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40 font-mono">
+            Loading...
+          </span>
         </h1>
         
         <p 
