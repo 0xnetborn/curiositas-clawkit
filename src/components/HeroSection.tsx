@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { createTimeline, stagger, animate } from 'animejs';
+import Link from 'next/link';
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -106,10 +107,10 @@ export default function HeroSection() {
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-          <button className="hero-btn group relative px-8 py-4 bg-white text-black font-medium text-sm tracking-wide overflow-hidden opacity-0">
+          <Link href="/dashboard" className="hero-btn group relative px-8 py-4 bg-white text-black font-medium text-sm tracking-wide overflow-hidden opacity-0 inline-block">
             <div className="absolute inset-0 bg-zinc-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
             <span className="relative z-10 group-hover:text-black transition-colors">INITIATE DEPLOYMENT</span>
-          </button>
+          </Link>
           
           <button className="hero-btn group px-8 py-4 border border-white/20 text-white/60 font-medium text-sm tracking-wide hover:text-white hover:border-white/40 transition-all opacity-0">
             VIEW DOCUMENTATION

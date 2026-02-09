@@ -23,7 +23,7 @@ export default function DashboardLayout({
       <aside className="w-16 md:w-64 border-r border-white/5 bg-black/50 backdrop-blur-xl flex flex-col justify-between z-20">
         <div>
           {/* Logo Area */}
-          <div className="h-16 flex items-center justify-center md:justify-start md:px-6 border-b border-white/5">
+          <Link href="/" className="h-16 flex items-center justify-center md:justify-start md:px-6 border-b border-white/5 hover:bg-white/5 transition-colors">
             <div className="w-8 h-8 relative flex items-center justify-center">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-teal-500">
                 <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -32,7 +32,7 @@ export default function DashboardLayout({
               </svg>
             </div>
             <span className="hidden md:block ml-3 font-mono text-sm tracking-widest text-white/80">CURIOKIT</span>
-          </div>
+          </Link>
 
           {/* Nav Links */}
           <nav className="p-4 space-y-2">
