@@ -1,146 +1,95 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { animate, createTimeline, stagger } from 'animejs';
+import { createTimeline, stagger, animate } from 'animejs';
 
 export default function HeroSection() {
-  const heroRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const hero = heroRef.current;
-    const title = titleRef.current;
-    const subtitle = subtitleRef.current;
+    if (!titleRef.current || !subtitleRef.current) return;
 
-    if (!hero || !title || !subtitle) return;
+    // Advanced Grid Animation
+    const grid = document.querySelector('.bg-grid');
+    if (grid) {
+      animate(grid, {
+        backgroundPosition: ['0px 0px', '40px 40px'],
+        duration: 3000,
+        loop: true,
+        ease: 'linear',
+      });
+    }
 
     const tl = createTimeline({
       defaults: {
         ease: 'outExpo',
-        duration: 1000,
+        duration: 1200,
       }
     });
 
-    tl.add(hero, {
+    // Stagger letters for title (requires splitting text into spans)
+    // For simplicity, we animate lines here, but advanced would be letter-by-letter
+    tl.add(titleRef.current, {
       opacity: [0, 1],
-      translateY: [50, 0],
-      duration: 800
+      translateY: [40, 0],
+      scale: [0.95, 1],
+      filter: ['blur(10px)', 'blur(0px)'],
     })
-    .add(title, {
-      opacity: [0, 1],
-      scale: [0.9, 1],
-      duration: 600
-    }, '-=400')
-    .add(subtitle, {
+    .add(subtitleRef.current, {
       opacity: [0, 1],
       translateY: [20, 0],
-      duration: 600
-    }, '-=300');
+    }, '-=800')
+    .add('.hero-btn', {
+      opacity: [0, 1],
+      translateY: [20, 0],
+      delay: stagger(100),
+    }, '-=800');
 
-    // Animate cards on scroll into view
-    const cards = cardsRef.current?.children;
-    if (cards) {
-      animate(Array.from(cards), {
-        opacity: [0, 1],
-        translateY: [50, 0],
-        delay: stagger(150, { start: 500 }),
-        ease: 'outExpo',
-        duration: 800,
-      });
-    }
   }, []);
 
   return (
-    <section ref={heroRef} className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-gradient-to-b from-zinc-950 to-zinc-900">
-      <div className="text-center max-w-4xl mx-auto">
-        <h1
-          ref={titleRef}
-          className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent opacity-0"
-        >
-          Curiositas ClawKit
-        </h1>
-        <p
-          ref={subtitleRef}
-          className="text-xl md:text-2xl text-zinc-400 mb-12 opacity-0"
-        >
-          Deploy immediato. Pack orientati a risultati.<br />
-          <span className="text-zinc-500">L'intelligenza che lavora per te.</span>
-        </p>
-      </div>
-
-      <div ref={cardsRef} className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto w-full mt-8">
-        {/* Pack 1 Card */}
-        <PackCard
-          title="Marketing Co-Founder"
-          subtitle="Presence Engine"
-          icon="🎯"
-          description="Costruisci e mantieni presenza online con senso. Ricerca, scrittura, review, repurpose e amplificazione."
-          features={['Athena - Strategist', 'Calliope - Writer', 'Hermes - Amplifier']}
-          gradient="from-emerald-500 to-teal-600"
-        />
-
-        {/* Pack 2 Card */}
-        <PackCard
-          title="Business Operator"
-          subtitle="Execution Engine"
-          icon="⚡"
-          description="Governa operatività e gestione business ogni settimana. Priorità, esecuzione, follow-up e decisioni."
-          features={['Hera - Operator', 'Argus - Research', 'Prometheus - Proposals']}
-          gradient="from-violet-500 to-purple-600"
-        />
-      </div>
-    </section>
-  );
-}
-
-function PackCard({
-  title,
-  subtitle,
-  icon,
-  description,
-  features,
-  gradient,
-}: {
-  title: string;
-  subtitle: string;
-  icon: string;
-  description: string;
-  features: string[];
-  gradient: string;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <div
-      ref={cardRef}
-      className="group relative p-8 rounded-2xl bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 hover:border-zinc-600 transition-all duration-300 opacity-0 cursor-pointer overflow-hidden hover:scale-[1.02]"
-    >
-      {/* Gradient glow on hover */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-
-      <div className="relative z-10">
-        <div className="text-5xl mb-4">{icon}</div>
-        <h3 className="text-2xl font-bold text-white mb-1">{title}</h3>
-        <p className="text-sm font-medium text-amber-400 mb-4">{subtitle}</p>
-        <p className="text-zinc-400 mb-6 leading-relaxed">{description}</p>
-
-        <div className="flex flex-wrap gap-2 mb-6">
-          {features.map((feature, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 text-xs font-medium rounded-full bg-zinc-700/50 text-zinc-300 border border-zinc-600/50"
-            >
-              {feature}
-            </span>
-          ))}
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid">
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black pointer-events-none" />
+      
+      <div className="relative z-10 text-center max-w-5xl px-6">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-xs font-mono text-white/60 tracking-wider">SYSTEM ONLINE v1.0</span>
         </div>
 
-        <button className={`w-full py-3 rounded-xl bg-gradient-to-r ${gradient} text-white font-semibold hover:shadow-lg hover:shadow-${gradient.split('-')[1]}/20 transition-all duration-300 transform group-hover:translate-y-[-2px]`}>
-          Attiva Pack
-        </button>
+        <h1 
+          ref={titleRef}
+          className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-tight opacity-0"
+        >
+          Curiositas <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">ClawKit</span>
+        </h1>
+        
+        <p 
+          ref={subtitleRef}
+          className="text-xl md:text-2xl text-white/40 font-light max-w-2xl mx-auto mb-12 opacity-0"
+        >
+          High-performance AI orchestration. <br className="hidden md:block" />
+          Deploy intelligent agents with surgical precision.
+        </p>
+
+        <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+          <button className="hero-btn group relative px-8 py-4 bg-white text-black font-medium text-sm tracking-wide overflow-hidden opacity-0">
+            <div className="absolute inset-0 bg-zinc-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+            <span className="relative z-10 group-hover:text-black transition-colors">INITIATE DEPLOYMENT</span>
+          </button>
+          
+          <button className="hero-btn group px-8 py-4 border border-white/20 text-white/60 font-medium text-sm tracking-wide hover:text-white hover:border-white/40 transition-all opacity-0">
+            VIEW DOCUMENTATION
+          </button>
+        </div>
       </div>
-    </div>
+      
+      {/* Decorative Grid Lines */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+    </section>
   );
 }
