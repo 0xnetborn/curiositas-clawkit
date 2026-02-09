@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
+import SpotlightCard from '@/components/ui/SpotlightCard';
 
 const agents = [
   { name: 'ATHENA', role: 'STRATEGIC CORE', type: 'LOGIC', status: 'ONLINE' },
@@ -34,7 +35,7 @@ export default function SquadSection() {
   }, []);
 
   return (
-    <section className="py-32 px-6 bg-black border-t border-white/5">
+    <section className="py-32 px-6 bg-black border-t border-white/5 relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between mb-16">
           <div>
@@ -50,23 +51,25 @@ export default function SquadSection() {
 
         <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {agents.map((agent, i) => (
-            <div key={i} className="group relative p-6 bg-white/5 border border-white/5 hover:border-white/20 transition-colors">
-              <div className="flex justify-between items-start mb-8">
-                <div className="w-2 h-2 rounded-full bg-teal-500 shadow-[0_0_10px_rgba(20,184,166,0.5)]" />
-                <span className="text-[10px] font-mono text-white/30">{agent.type}</span>
-              </div>
-              
-              <div className="space-y-1">
-                <h4 className="text-lg font-medium text-white tracking-tight group-hover:text-teal-400 transition-colors">
-                  {agent.name}
-                </h4>
-                <p className="text-xs font-mono text-white/50">{agent.role}</p>
+            <SpotlightCard key={i} className="group relative p-6 bg-white/5 border border-white/5 hover:border-white/20 transition-colors opacity-0">
+              <div className="relative z-10">
+                <div className="flex justify-between items-start mb-8">
+                  <div className="w-2 h-2 rounded-full bg-teal-500 shadow-[0_0_10px_rgba(20,184,166,0.5)] animate-pulse" />
+                  <span className="text-[10px] font-mono text-white/30">{agent.type}</span>
+                </div>
+                
+                <div className="space-y-1">
+                  <h4 className="text-lg font-medium text-white tracking-tight group-hover:text-teal-400 transition-colors">
+                    {agent.name}
+                  </h4>
+                  <p className="text-xs font-mono text-white/50">{agent.role}</p>
+                </div>
               </div>
 
               {/* Technical Corners */}
               <div className="absolute top-0 left-0 w-2 h-2 border-l border-t border-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>

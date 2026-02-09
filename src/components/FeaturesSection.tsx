@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
+import SpotlightCard from '@/components/ui/SpotlightCard';
 
 const features = [
   {
@@ -52,28 +53,30 @@ export default function FeaturesSection() {
   }, []);
 
   return (
-    <section id="features" ref={containerRef} className="py-32 px-6 bg-black border-t border-white/5">
+    <section id="features" ref={containerRef} className="py-32 px-6 bg-black border-t border-white/5 relative z-10">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-sm font-mono text-white/40 mb-12 tracking-widest uppercase">
           /// Core Capabilities
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((f, i) => (
-            <div key={i} className="feature-card bg-black p-8 group hover:bg-white/[0.02] transition-colors relative overflow-hidden opacity-0">
-              <div className="w-10 h-10 mb-6 text-white/40 group-hover:text-white transition-colors">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="square">
-                  <path d={f.path} />
-                </svg>
+            <SpotlightCard key={i} className="feature-card bg-white/5 border border-white/5 p-8 group relative opacity-0">
+              <div className="relative z-10">
+                <div className="w-10 h-10 mb-6 text-white/40 group-hover:text-white transition-colors">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="square">
+                    <path d={f.path} />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-medium text-white mb-2">{f.title}</h3>
+                <p className="text-sm text-white/40 font-light">{f.desc}</p>
               </div>
-              <h3 className="text-lg font-medium text-white mb-2">{f.title}</h3>
-              <p className="text-sm text-white/40 font-light">{f.desc}</p>
               
               {/* Corner accent */}
               <div className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="w-1.5 h-1.5 bg-teal-500 rounded-full" />
+                <div className="w-1.5 h-1.5 bg-teal-500 rounded-full shadow-[0_0_10px_rgba(20,184,166,0.8)]" />
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>
