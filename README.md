@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Curiositas ClawKit Demo
 
-## Getting Started
+Frontend demo per Curiositas ClawKit v1 - Costruito con Next.js, Tailwind CSS e Anime.js.
 
-First, run the development server:
+## Tech Stack
+- Next.js 14 (App Router)
+- Tailwind CSS
+- TypeScript
+- Anime.js v4 per animazioni
+
+## Installazione
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploy su Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npx vercel login
+npx vercel --prod
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Struttura
 
-## Learn More
+```
+src/
+├── app/
+│   ├── page.tsx
+│   └── globals.css
+└── components/
+    ├── Navbar.tsx
+    ├── HeroSection.tsx
+    ├── SquadSection.tsx
+    └── WorkflowSection.tsx
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Pack Disponibili
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Pack 1 - Marketing Co-Founder (Presence Engine)
+- Athena, Calliope, Themis, Hermes, Chronos, Daedalus
+- Workflow: Ricerca → Scrittura → Review → Repurpose → Amplificazione → Misurazione
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Pack 2 - Business Operator (Execution Engine)
+- Hera, Argus, Prometheus, Hestia, Heracles, Mnemosyne
+- Workflow: Priorità → Esecuzione → Follow-up → Decisioni → Report
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Crafted with 🦝 & ⚡ by Curiositas Studio
