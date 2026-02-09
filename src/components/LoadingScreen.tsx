@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-
-declare const anime: any;
+import { createTimeline } from 'animejs';
 
 export default function LoadingScreen() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -11,44 +10,41 @@ export default function LoadingScreen() {
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const tl = anime.timeline({
-      easing: 'easeOutExpo',
+    const container = containerRef.current;
+    const logo = logoRef.current;
+    const progress = progressRef.current;
+    const text = textRef.current;
+
+    if (!container || !logo || !progress || !text) return;
+
+    const tl = createTimeline({
+      defaults: {
+        ease: 'outExpo',
+      }
     });
 
-    // Logo animation
-    tl.fromTo(
-      logoRef.current,
-      { scale: 0.5, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 800 }
-    );
-
-    // Progress bar
-    tl.fromTo(
-      progressRef.current,
-      { width: '0%' },
-      { width: '100%', duration: 1500, easing: 'easeInOutQuad' },
-      '-=400'
-    );
-
-    // Text fade in
-    tl.fromTo(
-      textRef.current,
-      { opacity: 0, y: 10 },
-      { opacity: 1, y: 0, duration: 400 },
-      '-=800'
-    );
-
-    // Exit animation
-    tl.add({
-      targets: containerRef.current,
+    tl.add(logo, {
+      scale: [0.5, 1],
+      opacity: [0, 1],
+      duration: 800
+    })
+    .add(progress, {
+      width: ['0%', '100%'],
+      duration: 1500,
+      ease: 'inOutQuad'
+    }, '-=400')
+    .add(text, {
+      opacity: [0, 1],
+      translateY: [10, 0],
+      duration: 400
+    }, '-=800')
+    .add(container, {
       opacity: 0,
       duration: 500,
-      easing: 'easeOutQuad',
+      ease: 'outQuad',
       complete: () => {
-        if (containerRef.current) {
-          containerRef.current.style.display = 'none';
-        }
-      },
+        container.style.display = 'none';
+      }
     });
   }, []);
 

@@ -1,18 +1,17 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-
-declare const anime: any;
+import { animate } from 'animejs';
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    anime({
-      targets: navRef.current,
+    if (!navRef.current) return;
+    animate(navRef.current, {
       opacity: [0, 1],
       translateY: [-20, 0],
-      easing: 'easeOutExpo',
+      ease: 'outExpo',
       duration: 800,
     });
   }, []);

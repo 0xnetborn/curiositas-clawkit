@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-
-declare const anime: any;
+import { animate, stagger } from 'animejs';
 
 const testimonials = [
   {
@@ -34,33 +33,33 @@ export default function TestimonialsSection() {
     if (!container) return;
 
     // Title animation
-    anime({
-      targets: container.querySelector('h2'),
-      opacity: [0, 1],
-      translateY: [30, 0],
-      easing: 'easeOutExpo',
-      duration: 800,
-    });
+    const title = container.querySelector('h2');
+    if (title) {
+      animate(title, {
+        opacity: [0, 1],
+        translateY: [30, 0],
+        ease: 'outExpo',
+        duration: 800,
+      });
+    }
 
     // Cards stagger animation
-    anime({
-      targets: '.testimonial-card',
+    animate(container.querySelectorAll('.testimonial-card'), {
       opacity: [0, 1],
       translateY: [50, 0],
-      delay: anime.stagger(200),
-      easing: 'easeOutExpo',
+      delay: stagger(200),
+      ease: 'outExpo',
       duration: 800,
     });
 
     // Floating animation for icons
-    anime({
-      targets: '.floating-icon',
+    animate(container.querySelectorAll('.floating-icon'), {
       translateY: [-10, 0],
       direction: 'alternate',
       loop: true,
-      easing: 'easeInOutSine',
+      ease: 'inOutSine',
       duration: 2000,
-      delay: anime.stagger(500),
+      delay: stagger(500),
     });
   }, []);
 

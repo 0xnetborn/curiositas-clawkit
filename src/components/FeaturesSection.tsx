@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-
-declare const anime: any;
+import { animate, stagger } from 'animejs';
 
 const features = [
   {
@@ -47,22 +46,20 @@ export default function FeaturesSection() {
     if (!container || !grid) return;
 
     // Title animation
-    anime({
-      targets: container.querySelectorAll('h2, p'),
+    animate(container.querySelectorAll('h2, p'), {
       opacity: [0, 1],
       translateY: [30, 0],
-      delay: anime.stagger(100),
-      easing: 'easeOutExpo',
+      delay: stagger(100),
+      ease: 'outExpo',
       duration: 600,
     });
 
     // Feature cards stagger
-    anime({
-      targets: grid.children,
+    animate(grid.children, {
       opacity: [0, 1],
       scale: [0.9, 1],
-      delay: anime.stagger(100, { start: 300 }),
-      easing: 'easeOutExpo',
+      delay: stagger(100, { start: 300 }),
+      ease: 'outExpo',
       duration: 600,
     });
   }, []);

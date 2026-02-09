@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-
-declare const anime: any;
+import { animate, stagger } from 'animejs';
 
 const plans = [
   {
@@ -60,13 +59,15 @@ export default function PricingSection() {
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
     // Animate cards on mount
-    anime({
-      targets: '.pricing-card',
+    animate(container.querySelectorAll('.pricing-card'), {
       opacity: [0, 1],
       translateY: [60, 0],
-      delay: anime.stagger(150, { start: 200 }),
-      easing: 'easeOutExpo',
+      delay: stagger(150, { start: 200 }),
+      ease: 'outExpo',
       duration: 800,
     });
 
@@ -75,20 +76,18 @@ export default function PricingSection() {
       if (!card) return;
       
       card.addEventListener('mouseenter', () => {
-        anime({
-          targets: card,
+        animate(card, {
           scale: 1.02,
           duration: 300,
-          easing: 'easeOutQuad',
+          ease: 'outQuad',
         });
       });
       
       card.addEventListener('mouseleave', () => {
-        anime({
-          targets: card,
+        animate(card, {
           scale: 1,
           duration: 300,
-          easing: 'easeOutQuad',
+          ease: 'outQuad',
         });
       });
     });
@@ -111,7 +110,7 @@ export default function PricingSection() {
           {plans.map((plan, i) => (
             <div
               key={i}
-              ref={(el) => { cardsRef.current[i] = el!; }}
+              ref={(el) => { if(el) cardsRef.current[i] = el; }}
               className={`pricing-card relative p-8 rounded-2xl border transition-all duration-300 opacity-0 ${
                 plan.popular
                   ? 'bg-zinc-800/80 border-amber-500/50'

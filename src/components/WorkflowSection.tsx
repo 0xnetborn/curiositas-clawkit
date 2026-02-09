@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { animate, stagger } from 'animejs';
 
 const workflows = [
   {
@@ -30,8 +31,6 @@ const workflows = [
   },
 ];
 
-declare const anime: any;
-
 export default function WorkflowSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -40,12 +39,11 @@ export default function WorkflowSection() {
     if (!container) return;
 
     // Animate workflow lines
-    anime({
-      targets: '.workflow-line',
+    animate(container.querySelectorAll('.workflow-line'), {
       width: ['0%', '100%'],
       opacity: [0, 1],
-      delay: anime.stagger(200),
-      easing: 'easeOutExpo',
+      delay: stagger(200),
+      ease: 'outExpo',
       duration: 800,
     });
   }, []);

@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef, ReactNode } from 'react';
-
-declare const anime: any;
+import { animate } from 'animejs';
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -21,11 +20,10 @@ export default function ScrollReveal({ children, className = '', delay = 0 }: Sc
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            anime({
-              targets: el,
+            animate(el, {
               opacity: [0, 1],
               translateY: [50, 0],
-              easing: 'easeOutExpo',
+              ease: 'outExpo',
               duration: 800,
               delay: delay,
             });

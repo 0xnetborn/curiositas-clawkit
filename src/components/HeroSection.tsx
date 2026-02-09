@@ -1,24 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-
-interface AnimeInstance {
-  timeline: (options?: object) => AnimeInstance;
-  fromTo: (targets: any, from: any, to: any, options?: object) => AnimeInstance;
-  opacity: number[];
-  y: number[];
-  scale: number[];
-  duration: number;
-  easing: string;
-  delay: number | ((el: any, i: number) => number);
-  stagger: (delay: number, options?: { start?: number }) => { start: number };
-}
-
-declare const anime: {
-  (options: object): AnimeInstance;
-  timeline: (options?: object) => AnimeInstance;
-  stagger: (delay: number, options?: { start?: number }) => { start: number };
-};
+import { animate, createTimeline, stagger } from 'animejs';
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -27,38 +10,43 @@ export default function HeroSection() {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const tl = (anime as any).timeline({
-      easing: 'easeOutExpo',
-      duration: 1000,
+    const hero = heroRef.current;
+    const title = titleRef.current;
+    const subtitle = subtitleRef.current;
+
+    if (!hero || !title || !subtitle) return;
+
+    const tl = createTimeline({
+      defaults: {
+        ease: 'outExpo',
+        duration: 1000,
+      }
     });
 
-    tl.fromTo(
-      heroRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 800 }
-    )
-      .fromTo(
-        titleRef.current,
-        { opacity: 0, scale: 0.9 },
-        { opacity: 1, scale: 1, duration: 600 },
-        '-=400'
-      )
-      .fromTo(
-        subtitleRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 600 },
-        '-=300'
-      );
+    tl.add(hero, {
+      opacity: [0, 1],
+      translateY: [50, 0],
+      duration: 800
+    })
+    .add(title, {
+      opacity: [0, 1],
+      scale: [0.9, 1],
+      duration: 600
+    }, '-=400')
+    .add(subtitle, {
+      opacity: [0, 1],
+      translateY: [20, 0],
+      duration: 600
+    }, '-=300');
 
     // Animate cards on scroll into view
     const cards = cardsRef.current?.children;
     if (cards) {
-      (anime as any)({
-        targets: Array.from(cards),
+      animate(Array.from(cards), {
         opacity: [0, 1],
         translateY: [50, 0],
-        delay: (anime as any).stagger(150, { start: 500 }),
-        easing: 'easeOutExpo',
+        delay: stagger(150, { start: 500 }),
+        ease: 'outExpo',
         duration: 800,
       });
     }
@@ -124,22 +112,10 @@ function PackCard({
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (cardRef.current) {
-      (anime as any)({
-        targets: cardRef.current,
-        scale: [1, 1.02],
-        duration: 200,
-        easing: 'easeOutQuad',
-        direction: 'alternate',
-      });
-    }
-  }, []);
-
   return (
     <div
       ref={cardRef}
-      className="group relative p-8 rounded-2xl bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 hover:border-zinc-600 transition-all duration-300 opacity-0 cursor-pointer overflow-hidden"
+      className="group relative p-8 rounded-2xl bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 hover:border-zinc-600 transition-all duration-300 opacity-0 cursor-pointer overflow-hidden hover:scale-[1.02]"
     >
       {/* Gradient glow on hover */}
       <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />

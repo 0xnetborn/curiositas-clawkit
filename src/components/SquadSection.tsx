@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { animate, stagger } from 'animejs';
 
 interface SquadMember {
   name: string;
@@ -26,8 +27,6 @@ const squadMembers: SquadMember[] = [
   { name: 'Mnemosyne', role: 'Reports', icon: '📝', pack: 'business' },
 ];
 
-declare const anime: any;
-
 export default function SquadSection() {
   const gridRef = useRef<HTMLDivElement>(null);
 
@@ -36,12 +35,11 @@ export default function SquadSection() {
     if (!grid) return;
 
     // Stagger animation for all members
-    anime({
-      targets: grid.children,
+    animate(grid.children, {
       opacity: [0, 1],
       scale: [0.8, 1],
-      delay: anime.stagger(80),
-      easing: 'easeOutExpo',
+      delay: stagger(80),
+      ease: 'outExpo',
       duration: 600,
     });
   }, []);
