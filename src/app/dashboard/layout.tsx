@@ -1,10 +1,22 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
+  const navItems = [
+    { name: 'OVERVIEW', path: '/dashboard', icon: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z' },
+    { name: 'SQUAD', path: '/dashboard/squad', icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75' },
+    { name: 'PIPELINE', path: '/dashboard/pipeline', icon: 'M22 12h-4l-3 9L9 3l-3 9H2' },
+    { name: 'ARCHIVE', path: '/dashboard/archive', icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z polyline points="14 2 14 8 20 8"' },
+  ];
+
   return (
     <div className="flex h-screen bg-black text-white overflow-hidden font-sans selection:bg-teal-500/30">
       {/* Sidebar */}
@@ -24,27 +36,25 @@ export default function DashboardLayout({
 
           {/* Nav Links */}
           <nav className="p-4 space-y-2">
-            {[
-              { name: 'OVERVIEW', icon: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z', active: true },
-              { name: 'SQUAD', icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75' },
-              { name: 'PIPELINE', icon: 'M22 12h-4l-3 9L9 3l-3 9H2' },
-              { name: 'ARCHIVE', icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z polyline points="14 2 14 8 20 8"' },
-            ].map((item) => (
-              <Link
-                key={item.name}
-                href="#"
-                className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all group ${
-                  item.active 
-                    ? 'bg-teal-500/10 text-teal-500 border border-teal-500/20' 
-                    : 'text-white/40 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d={item.icon} />
-                </svg>
-                <span className="hidden md:block text-[10px] font-mono tracking-wider">{item.name}</span>
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = pathname === item.path;
+              return (
+                <Link
+                  key={item.name}
+                  href={item.path}
+                  className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all group ${
+                    isActive 
+                      ? 'bg-teal-500/10 text-teal-500 border border-teal-500/20' 
+                      : 'text-white/40 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d={item.icon} />
+                  </svg>
+                  <span className="hidden md:block text-[10px] font-mono tracking-wider">{item.name}</span>
+                </Link>
+              );
+            })}
           </nav>
         </div>
 
@@ -71,7 +81,7 @@ export default function DashboardLayout({
           <div className="flex items-center gap-2 text-xs font-mono text-white/40">
             <span>WORKSPACE</span>
             <span>/</span>
-            <span className="text-white">DASHBOARD</span>
+            <span className="text-white uppercase">{pathname.split('/').pop() || 'DASHBOARD'}</span>
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 px-3 py-1 bg-teal-500/5 border border-teal-500/20 rounded-full">
