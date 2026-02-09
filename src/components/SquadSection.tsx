@@ -52,12 +52,12 @@ export default function SquadSection() {
           {agents.map((agent, i) => (
             <div key={i} className="group relative p-6 bg-white/5 border border-white/5 hover:border-white/20 transition-colors">
               <div className="flex justify-between items-start mb-8">
-                <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                <div className="w-2 h-2 rounded-full bg-teal-500 shadow-[0_0_10px_rgba(20,184,166,0.5)]" />
                 <span className="text-[10px] font-mono text-white/30">{agent.type}</span>
               </div>
               
               <div className="space-y-1">
-                <h4 className="text-lg font-medium text-white tracking-tight group-hover:text-emerald-400 transition-colors">
+                <h4 className="text-lg font-medium text-white tracking-tight group-hover:text-teal-400 transition-colors">
                   {agent.name}
                 </h4>
                 <p className="text-xs font-mono text-white/50">{agent.role}</p>

@@ -65,7 +65,7 @@ export default function PricingSection() {
               <ul className="space-y-4 mb-8">
                 {plan.features.map((feat, f) => (
                   <li key={f} className="text-sm text-white/60 flex items-center gap-3">
-                    <span className="w-1 h-1 bg-emerald-500" />
+                    <span className="w-1 h-1 bg-teal-500" />
                     {feat}
                   </li>
                 ))}

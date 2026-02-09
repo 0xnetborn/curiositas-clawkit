@@ -9,7 +9,7 @@ import LoadingScreen from '@/components/LoadingScreen';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white selection:bg-emerald-500/30">
+    <main className="min-h-screen bg-black text-white selection:bg-teal-500/30">
       <LoadingScreen />
       <Navbar />
       <HeroSection />
@@ -24,9 +24,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none" />
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 border border-emerald-500/20 bg-emerald-500/5 mb-8">
-            <span className="w-1.5 h-1.5 bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-mono text-emerald-500 tracking-widest uppercase">System Ready</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 border border-teal-500/20 bg-teal-500/5 mb-8">
+            <span className="w-1.5 h-1.5 bg-teal-500 animate-pulse" />
+            <span className="text-[10px] font-mono text-teal-500 tracking-widest uppercase">System Ready</span>
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 text-white">
@@ -67,14 +67,14 @@ export default function Home() {
 
           <div className="flex gap-8">
             {['Twitter', 'GitHub', 'Discord'].map((social) => (
-              <a key={social} href="#" className="text-xs font-mono text-white/40 hover:text-emerald-500 transition-colors uppercase">
+              <a key={social} href="#" className="text-xs font-mono text-white/40 hover:text-teal-500 transition-colors uppercase">
                 {social}
               </a>
             ))}
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-emerald-500" />
+            <div className="w-2 h-2 rounded-full bg-teal-500" />
             <span className="text-xs font-mono text-white/40 tracking-wider">ALL SYSTEMS OPERATIONAL</span>
           </div>
         </div>

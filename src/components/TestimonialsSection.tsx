@@ -33,7 +33,7 @@ export default function TestimonialsSection() {
               {q.text}
             </p>
             <div className="h-px w-8 bg-white/20 mb-4 group-hover:w-full transition-all duration-700 ease-out" />
-            <span className="text-xs font-mono text-emerald-500 tracking-widest uppercase">
+            <span className="text-xs font-mono text-teal-500 tracking-widest uppercase">
               {q.author}
             </span>
           </div>

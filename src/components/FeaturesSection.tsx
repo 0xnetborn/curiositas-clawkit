@@ -71,7 +71,7 @@ export default function FeaturesSection() {
               
               {/* Corner accent */}
               <div className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                <div className="w-1.5 h-1.5 bg-teal-500 rounded-full" />
               </div>
             </div>
           ))}

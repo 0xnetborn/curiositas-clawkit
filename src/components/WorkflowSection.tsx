@@ -40,7 +40,7 @@ export default function WorkflowSection() {
           {workflows.map((flow, i) => (
             <div key={i} className="relative">
               <div className="flex items-center gap-4 mb-8">
-                <span className="text-xs font-mono text-emerald-500 px-2 py-1 bg-emerald-500/10 border border-emerald-500/20">
+                <span className="text-xs font-mono text-teal-500 px-2 py-1 bg-teal-500/10 border border-teal-500/20">
                   {flow.id}
                 </span>
                 <h3 className="text-xl text-white font-light tracking-wide">{flow.name}</h3>
