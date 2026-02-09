@@ -5,18 +5,21 @@ import { animate, stagger } from 'animejs';
 import SpotlightCard from '@/components/ui/SpotlightCard';
 
 const agents = [
-  { name: 'ATHENA', role: 'STRATEGIC CORE', type: 'LOGIC', status: 'ONLINE' },
-  { name: 'CALLIOPE', role: 'GENERATIVE ENGINE', type: 'CREATIVE', status: 'IDLE' },
-  { name: 'THEMIS', role: 'QUALITY GUARD', type: 'AUDIT', status: 'ACTIVE' },
-  { name: 'HERMES', role: 'DISTRIBUTION NODE', type: 'NETWORK', status: 'WAITING' },
-  { name: 'CHRONOS', role: 'ANALYTICS MAIN', type: 'DATA', status: 'PROCESSING' },
-  { name: 'DAEDALUS', role: 'PROJECT MANAGER', type: 'CONTROL', status: 'ONLINE' },
-  { name: 'HERA', role: 'OPS CONTROLLER', type: 'SYSTEM', status: 'ONLINE' },
-  { name: 'ARGUS', role: 'RESEARCH UNIT', type: 'SCANNER', status: 'ACTIVE' },
-  { name: 'PROMETHEUS', role: 'OUTPUT GENERATOR', type: 'BUILDER', status: 'IDLE' },
-  { name: 'HESTIA', role: 'CLIENT INTERFACE', type: 'RELAY', status: 'WAITING' },
-  { name: 'HERACLES', role: 'TASK RESOLVER', type: 'WORKER', status: 'BUSY' },
-  { name: 'MNEMOSYNE', role: 'MEMORY ARCHIVE', type: 'STORAGE', status: 'ONLINE' },
+  // Marketing Squad
+  { name: 'ATHENA', role: 'STRATEGIST', desc: 'Topic & Angles', type: 'LOGIC', status: 'ONLINE' },
+  { name: 'CALLIOPE', role: 'WRITER', desc: 'Drafts & Style', type: 'CREATIVE', status: 'IDLE' },
+  { name: 'THEMIS', role: 'QUALITY GATE', desc: 'Review & Reject', type: 'AUDIT', status: 'ACTIVE' },
+  { name: 'HERMES', role: 'AMPLIFIER', desc: 'Repurpose & Launch', type: 'NETWORK', status: 'WAITING' },
+  { name: 'CHRONOS', role: 'ANALYTICS', desc: 'Weekly Report', type: 'DATA', status: 'PROCESSING' },
+  { name: 'DAEDALUS', role: 'PM', desc: 'Backlog & Flow', type: 'CONTROL', status: 'ONLINE' },
+  
+  // Business Squad
+  { name: 'HERA', role: 'OPERATOR', desc: 'Weekly Plan', type: 'SYSTEM', status: 'ONLINE' },
+  { name: 'ARGUS', role: 'RESEARCH', desc: 'Competitors & Options', type: 'SCANNER', status: 'ACTIVE' },
+  { name: 'PROMETHEUS', role: 'PROPOSALS', desc: 'Drafts & Scope', type: 'BUILDER', status: 'IDLE' },
+  { name: 'HESTIA', role: 'CLIENT TRIAGE', desc: 'Inbox Zero', type: 'RELAY', status: 'WAITING' },
+  { name: 'HERACLES', role: 'UNBLOCKER', desc: 'Blockers & Deadlines', type: 'WORKER', status: 'BUSY' },
+  { name: 'MNEMOSYNE', role: 'REPORTS', desc: 'Progress & Moves', type: 'STORAGE', status: 'ONLINE' },
 ];
 
 export default function SquadSection() {
@@ -62,7 +65,10 @@ export default function SquadSection() {
                   <h4 className="text-lg font-medium text-white tracking-tight group-hover:text-teal-400 transition-colors">
                     {agent.name}
                   </h4>
-                  <p className="text-xs font-mono text-white/50">{agent.role}</p>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-white/70">{agent.role}</span>
+                    <span className="text-[10px] font-mono text-white/40 uppercase">{agent.desc}</span>
+                  </div>
                 </div>
               </div>
 

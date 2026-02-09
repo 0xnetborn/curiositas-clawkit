@@ -5,14 +5,16 @@ import { animate, stagger } from 'animejs';
 
 const workflows = [
   {
-    id: 'PIPE-01',
-    name: 'PRESENCE ENGINE',
-    steps: ['SCAN', 'DRAFT', 'AUDIT', 'ADAPT', 'SYNC', 'METRICS']
+    id: 'PACK-01',
+    name: 'MARKETING CO-FOUNDER',
+    sub: 'PRESENCE ENGINE',
+    steps: ['RICERCA', 'SCRITTURA', 'REVISIONE', 'REPURPOSE', 'AMPLIFICAZIONE', 'MISURAZIONE']
   },
   {
-    id: 'PIPE-02',
-    name: 'EXECUTION CORE',
-    steps: ['PRIORITY', 'EXECUTE', 'VERIFY', 'DECISION', 'LOG']
+    id: 'PACK-02',
+    name: 'BUSINESS OPERATOR',
+    sub: 'EXECUTION ENGINE',
+    steps: ['PRIORITÀ', 'ESECUZIONE', 'FOLLOW-UP', 'DECISIONI', 'REPORT']
   }
 ];
 
@@ -43,7 +45,10 @@ export default function WorkflowSection() {
                 <span className="text-xs font-mono text-teal-500 px-2 py-1 bg-teal-500/10 border border-teal-500/20">
                   {flow.id}
                 </span>
-                <h3 className="text-xl text-white font-light tracking-wide">{flow.name}</h3>
+                <div>
+                  <h3 className="text-xl text-white font-light tracking-wide">{flow.name}</h3>
+                  <span className="text-xs font-mono text-white/40 tracking-wider">{flow.sub}</span>
+                </div>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
