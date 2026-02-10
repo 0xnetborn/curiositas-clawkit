@@ -6,6 +6,7 @@ import WorkflowSection from '@/components/WorkflowSection';
 import PricingSection from '@/components/PricingSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import FAQSection from '@/components/FAQSection';
+import NewsletterSection from '@/components/NewsletterSection';
 import LoadingScreen from '@/components/LoadingScreen';
 import TrustedBySection from '@/components/TrustedBySection';
 import KonamiEasterEgg from '@/components/KonamiEasterEgg';
@@ -22,6 +23,7 @@ export default function Home() {
       <WorkflowSection />
       <TestimonialsSection />
       <FAQSection />
+      <NewsletterSection />
       <PricingSection />
       <TrustedBySection />
 

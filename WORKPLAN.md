@@ -77,5 +77,8 @@
 
 ---
 
+*Last Run: February 10, 2026, 3:36 PM (Europe/Rome)*
+*Status: TASK COMPLETED - Added Newsletter section with email signup form and Anime.js animations*
+
 ### New Task Added (Pending)
-- [ ] Add "Scroll to Top" floating button with smooth animation (appears on scroll)
+- [ ] Add detailed documentation/guides section to landing page
