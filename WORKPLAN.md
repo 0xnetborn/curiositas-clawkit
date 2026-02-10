@@ -42,4 +42,9 @@
 *Status: TASK COMPLETED - Added SEO improvements (sitemap.xml, robots.txt, canonical tags)*
 
 ### New Task Added (Pending)
-- [ ] Add schema.org structured data (Organization, WebSite, WebPage schemas)
+- [x] Add schema.org structured data (Organization, WebSite, WebPage schemas)
+
+---
+
+*Last Run: February 10, 2026, 10:06 AM (Europe/Rome)*
+*Status: TASK COMPLETED - Added schema.org structured data (Organization, WebSite, WebPage schemas)*

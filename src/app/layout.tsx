@@ -41,6 +41,52 @@ export const metadata: Metadata = {
   },
 };
 
+// Schema.org Structured Data
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Curiositas Studio",
+  "url": "https://curiokit.com",
+  "logo": "https://curiokit.com/logo.webp",
+  "sameAs": [
+    "https://twitter.com/curiositas",
+    "https://github.com/curiositas",
+    "https://discord.gg/curiositas"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "url": "https://curiokit.com"
+  }
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "CurioKit",
+  "url": "https://curiokit.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://curiokit.com/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
+const webpageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "CurioKit | AI Orchestration for Founders",
+  "url": "https://curiokit.com",
+  "description": "High-performance AI agent squads for marketing and operations. Deploy instantly.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Curiositas Studio"
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,6 +94,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webpageSchema) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
