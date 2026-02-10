@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { animate, createTimeline, stagger } from 'animejs';
+import { animate, createTimeline } from 'animejs';
 import Image from 'next/image';
 
 export default function LoadingScreen({ onComplete }: { onComplete?: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -24,23 +25,34 @@ export default function LoadingScreen({ onComplete }: { onComplete?: () => void 
       }
     });
 
-    // 1. Fade In Elements
+    // 1. Fade In Elements (Fast)
     tl.add('.loader-content', {
       opacity: [0, 1],
       scale: [0.95, 1],
-      duration: 1000,
+      duration: 600,
       easing: 'outExpo',
     }, 0);
 
-    // 2. Pulse Ring
+    // 2. Pulse Ring (Short loops)
     tl.add('.pulse-ring', {
-      scale: [1, 2],
-      opacity: [0.5, 0],
-      duration: 2000,
-      loop: true,
+      scale: [1, 1.5],
+      opacity: [0.8, 0],
+      duration: 400,
       easing: 'outSine',
+      loop: 2,
     }, 0);
 
+    // Safety Timeout: Force complete after 1.5s
+    timeoutRef.current = setTimeout(() => {
+      tl.pause();
+      if (tl.began) { // If we started, try to finish
+        tl.seek(tl.duration);
+      }
+    }, 1500);
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
   }, [onComplete]);
 
   return (
@@ -82,15 +94,10 @@ export default function LoadingScreen({ onComplete }: { onComplete?: () => void 
 
         {/* Status Text */}
         <div className="flex items-center gap-3 text-xs font-mono text-white/40 tracking-[0.3em] uppercase">
-          <span className="animate-blink">Initializing</span>
+          <span className="animate-pulse">Initializing</span>
           <span className="text-white/20">//</span>
           <span className="text-teal-500">System Ready</span>
         </div>
-      </div>
-
-      {/* Bottom Progress Line (Optional / Aesthetic) */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-white/5">
-        <div className="h-full bg-teal-500 w-full animate-[loading_2s_ease-in-out_infinite]" />
       </div>
     </div>
   );
