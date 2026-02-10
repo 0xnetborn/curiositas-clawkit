@@ -81,4 +81,9 @@
 *Status: TASK COMPLETED - Added Newsletter section with email signup form and Anime.js animations*
 
 ### New Task Added (Pending)
-- [ ] Add detailed documentation/guides section to landing page
+- [x] Add detailed documentation/guides section to landing page
+
+---
+
+*Last Run: February 10, 2026, 4:06 PM (Europe/Rome)*
+*Status: TASK COMPLETED - Added DocsSection with 4 accordion items and Anime.js animations*

@@ -9,6 +9,7 @@ import FAQSection from '@/components/FAQSection';
 import NewsletterSection from '@/components/NewsletterSection';
 import LoadingScreen from '@/components/LoadingScreen';
 import TrustedBySection from '@/components/TrustedBySection';
+import DocsSection from '@/components/DocsSection';
 import KonamiEasterEgg from '@/components/KonamiEasterEgg';
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
       <FAQSection />
       <NewsletterSection />
       <PricingSection />
+      <DocsSection />
       <TrustedBySection />
 
       {/* Final CTA - Tech Style */}
