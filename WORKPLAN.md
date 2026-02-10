@@ -48,3 +48,12 @@
 
 *Last Run: February 10, 2026, 11:36 AM (Europe/Rome)*
 *Status: TASK COMPLETED - Added pulse-teal animation to CTA buttons in Pricing & Landing Page*
+
+### New Task Added (Pending)
+- [x] Implement dark/light theme toggle with smooth transitions
+
+---
+
+*Last Run: February 10, 2026, 12:36 PM (Europe/Rome)*
+*Status: TASK COMPLETED - Implemented dark/light theme toggle with smooth transitions and theme persistence*
+

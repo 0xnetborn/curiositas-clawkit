@@ -1,9 +1,17 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import Link from "next/link";
+import { useTheme } from './ThemeContext';
 
 export default function Footer() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const links = {
     product: [
@@ -30,7 +38,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-white/10 bg-black/50 backdrop-blur-sm">
+    <footer className={`border-t backdrop-blur-sm transition-colors ${mounted && theme === 'light' ? 'border-slate-200 bg-white/50' : 'border-white/10 bg-black/50'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -41,7 +49,7 @@ export default function Footer() {
               </div>
               <span className="font-bold text-lg">CurioKit</span>
             </Link>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className={`text-sm mb-4 transition-colors ${mounted && theme === 'light' ? 'text-slate-600' : 'text-gray-400'}`}>
               Deploy AI agent squads for marketing & operations.
             </p>
             <div className="flex space-x-4">
@@ -52,7 +60,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.aria}
-                  className="text-gray-400 hover:text-teal-400 transition-colors"
+                  className={`transition-colors ${mounted && theme === 'light' ? 'text-slate-500 hover:text-teal-600' : 'text-gray-400 hover:text-teal-400'}`}
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d={social.icon} />
@@ -64,13 +72,13 @@ export default function Footer() {
 
           {/* Product Links */}
           <div>
-            <h3 className="font-semibold text-sm mb-4">Product</h3>
+            <h3 className={`font-semibold text-sm mb-4 transition-colors ${mounted && theme === 'light' ? 'text-slate-900' : ''}`}>Product</h3>
             <ul className="space-y-2">
               {links.product.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-teal-400 text-sm transition-colors"
+                    className={`text-sm transition-colors ${mounted && theme === 'light' ? 'text-slate-500 hover:text-slate-900' : 'text-gray-400 hover:text-teal-400'}`}
                   >
                     {link.label}
                   </Link>
@@ -81,13 +89,13 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h3 className="font-semibold text-sm mb-4">Company</h3>
+            <h3 className={`font-semibold text-sm mb-4 transition-colors ${mounted && theme === 'light' ? 'text-slate-900' : ''}`}>Company</h3>
             <ul className="space-y-2">
               {links.company.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-teal-400 text-sm transition-colors"
+                    className={`text-sm transition-colors ${mounted && theme === 'light' ? 'text-slate-500 hover:text-slate-900' : 'text-gray-400 hover:text-teal-400'}`}
                   >
                     {link.label}
                   </Link>
@@ -98,13 +106,13 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div>
-            <h3 className="font-semibold text-sm mb-4">Legal</h3>
+            <h3 className={`font-semibold text-sm mb-4 transition-colors ${mounted && theme === 'light' ? 'text-slate-900' : ''}`}>Legal</h3>
             <ul className="space-y-2">
               {links.legal.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-teal-400 text-sm transition-colors"
+                    className={`text-sm transition-colors ${mounted && theme === 'light' ? 'text-slate-500 hover:text-slate-900' : 'text-gray-400 hover:text-teal-400'}`}
                   >
                     {link.label}
                   </Link>
@@ -115,11 +123,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">
+        <div className={`mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center ${mounted && theme === 'light' ? 'border-slate-200' : 'border-white/5'}`}>
+          <p className={`text-sm transition-colors ${mounted && theme === 'light' ? 'text-slate-500' : 'text-gray-500'}`}>
             © {currentYear} Curiositas Studio. All rights reserved.
           </p>
-          <p className="text-gray-600 text-sm mt-2 md:mt-0">
+          <p className={`text-sm mt-2 md:mt-0 transition-colors ${mounted && theme === 'light' ? 'text-slate-500' : 'text-gray-600'}`}>
             Made with ⚡ by Fabbrizzio
           </p>
         </div>

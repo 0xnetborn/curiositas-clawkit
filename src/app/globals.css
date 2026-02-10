@@ -8,6 +8,13 @@
   --grid-color: rgba(255, 255, 255, 0.05);
 }
 
+:root[class="light"] {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --accent: #0d9488;
+  --grid-color: rgba(0, 0, 0, 0.05);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -21,6 +28,7 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Cinematic Grain Effect */
