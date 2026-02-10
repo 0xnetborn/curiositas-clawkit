@@ -7,11 +7,13 @@ import PricingSection from '@/components/PricingSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import LoadingScreen from '@/components/LoadingScreen';
 import TrustedBySection from '@/components/TrustedBySection';
+import KonamiEasterEgg from '@/components/KonamiEasterEgg';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white selection:bg-teal-500/30">
       <LoadingScreen />
+      <KonamiEasterEgg />
       <Navbar />
       <HeroSection />
       <FeaturesSection />

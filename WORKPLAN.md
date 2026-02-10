@@ -27,8 +27,8 @@
 - [x] Create a 404 page with style (maybe a "404: Agent Lost in Void" animation).
 
 ### 5. Experiments (Low Priority)
-- [ ] Try a WebGL background effect using a lightweight library (if performance allows).
-- [ ] Add a "Konami Code" easter egg.
+- [x] Try a WebGL background effect using a lightweight library (if performance allows).
+- [x] Add a "Konami Code" easter egg.
 
 ## Execution Rules
 1. **Autopilot Mode:** Every 30 mins, the agent will pick ONE task from the top uncompleted items.
@@ -37,5 +37,5 @@
 
 ---
 
-*Last Run: February 10, 2026, 5:36 AM (Europe/Rome)*
+*Last Run: February 10, 2026, 6:06 AM (Europe/Rome)*
 *Status: RUNNING*
