@@ -39,42 +39,111 @@ const features = [
 
 export default function FeaturesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLHeadingElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    animate(containerRef.current.querySelectorAll('.feature-card'), {
-      opacity: [0, 1],
-      translateY: [20, 0],
-      delay: stagger(100, { start: 200 }),
-      ease: 'outExpo',
-      duration: 1000,
+    // Header reveal animation
+    if (headerRef.current) {
+      animate(headerRef.current, {
+        opacity: [0, 1],
+        translateX: [-30, 0],
+        duration: 800,
+        easing: 'outExpo',
+      });
+    }
+
+    // Intersection Observer for scroll-triggered card reveal
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Stagger reveal for icons first
+            animate(entry.target.querySelectorAll('.feature-icon'), {
+              opacity: [0, 1],
+              scale: [0.5, 1],
+              delay: stagger(80),
+              duration: 600,
+              easing: 'outBack',
+            });
+            
+            // Then stagger reveal for cards
+            animate(entry.target.querySelectorAll('.feature-card'), {
+              opacity: [0, 1],
+              translateY: [40, 0],
+              delay: stagger(100, { from: 'center' }),
+              duration: 800,
+              easing: 'outExpo',
+            });
+
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    if (cardsRef.current) {
+      observer.observe(cardsRef.current);
+    }
+
+    // Add hover-triggered animations
+    const cards = containerRef.current.querySelectorAll('.feature-card');
+    cards.forEach((card) => {
+      card.addEventListener('mouseenter', () => {
+        animate(card, {
+          scale: 1.02,
+          duration: 300,
+          easing: 'outExpo',
+        });
+      });
+      card.addEventListener('mouseleave', () => {
+        animate(card, {
+          scale: 1,
+          duration: 300,
+          easing: 'outExpo',
+        });
+      });
     });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section id="features" ref={containerRef} className="py-32 px-6 bg-black border-t border-white/5 relative z-10">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-sm font-mono text-white/40 mb-12 tracking-widest uppercase">
+        <h2 
+          ref={headerRef}
+          className="text-sm font-mono text-white/40 mb-12 tracking-widest uppercase opacity-0"
+        >
           /// Core Capabilities
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((f, i) => (
             <SpotlightCard key={i} className="feature-card bg-white/5 border border-white/5 p-8 group relative cursor-pointer opacity-0">
+              {/* Icon reveal animation */}
+              <div className="feature-icon opacity-0 w-10 h-10 mb-6 text-white/40 group-hover:text-white transition-colors">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="square">
+                  <path d={f.path} />
+                </svg>
+              </div>
+              
               <div className="relative z-10">
-                <div className="w-10 h-10 mb-6 text-white/40 group-hover:text-white transition-colors">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="square">
-                    <path d={f.path} />
-                  </svg>
-                </div>
                 <h3 className="text-lg font-medium text-white mb-2">{f.title}</h3>
                 <p className="text-sm text-white/40 font-light">{f.desc}</p>
               </div>
               
-              {/* Corner accent */}
+              {/* Corner accent with pulse */}
               <div className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="w-1.5 h-1.5 bg-teal-500 rounded-full shadow-[0_0_10px_rgba(20,184,166,0.8)]" />
+              </div>
+              
+              {/* Subtle border glow on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div className="absolute inset-0 border border-teal-500/30 rounded-lg" />
               </div>
             </SpotlightCard>
           ))}

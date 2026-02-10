@@ -9,6 +9,7 @@ export default function HeroSection() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!titleRef.current || !subtitleRef.current) return;
@@ -31,7 +32,7 @@ export default function HeroSection() {
       }
     });
 
-    // Scramble Effect for Title
+    // Scramble Effect for Title with enhanced timing
     const finalBuffer = 'CurioKit';
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
     
@@ -40,7 +41,7 @@ export default function HeroSection() {
       
       tl.add(proxy, {
         value: 1,
-        duration: 1000,
+        duration: 1200,
         ease: 'outExpo',
         onUpdate: (anim) => {
           if (!textRef.current) return;
@@ -60,60 +61,106 @@ export default function HeroSection() {
       }, 0); // Start immediately
     }
 
+    // Enhanced Hero Reveal Timeline
     tl.add(titleRef.current, {
       opacity: [0, 1],
-      translateY: [40, 0],
-      scale: [0.95, 1],
-      filter: ['blur(10px)', 'blur(0px)'],
-    }, 0)
-    .add(subtitleRef.current, {
-      opacity: [0, 1],
-      translateY: [20, 0],
-    }, '-=800')
-    .add('.hero-btn', {
-      opacity: [0, 1],
-      translateY: [20, 0],
-      delay: stagger(100),
-    }, '-=800');
+      translateY: [50, 0],
+      scale: [0.92, 1],
+      filter: ['blur(20px)', 'blur(0px)'],
+      duration: 1400,
+    }, 0);
 
-    // Animate Particles
+    // Badge stagger reveal (conditional on badgeRef being available)
+    if (badgeRef.current) {
+      tl.add(badgeRef.current, {
+        opacity: [0, 1],
+        translateY: [-15, 0],
+        scale: [0.9, 1],
+        duration: 800,
+      }, '-=800');
+    }
+
+    // Enhanced subtitle reveal with blur effect
+    tl.add(subtitleRef.current, {
+      opacity: [0, 1],
+      translateY: [25, 0],
+      filter: ['blur(10px)', 'blur(0px)'],
+      duration: 1200,
+    }, '-=700')
+    // Buttons with enhanced stagger
+    tl.add('.hero-btn', {
+      opacity: [0, 1],
+      translateY: [30, 0],
+      scale: [0.95, 1],
+      delay: stagger(150, { from: 'center' }),
+    }, '-=900')
+    // Decorative elements reveal
+    .add('.hero-decor', {
+      opacity: [0, 1],
+      translateX: [20, 0],
+      delay: stagger(300, { from: 'first' }),
+      duration: 800,
+    }, '-=600');
+
+    // Enhanced Particle Animation
     animate('.dust-particle', {
-      translateY: [0, -100],
+      translateY: [0, -150],
       translateX: [0, 20],
-      opacity: [0, 0.6, 0],
-      duration: 4000,
-      delay: stagger(200),
+      opacity: [0, 0.8, 0],
+      scale: [0.5, 1.2, 0.3],
+      duration: 5000,
+      delay: stagger(150),
       loop: true,
-      easing: 'linear',
+      easing: 'easeInOutSine',
+    });
+
+    // Glow ring pulse animation
+    animate('.glow-ring', {
+      scale: [1, 1.5],
+      opacity: [0.3, 0],
+      duration: 3000,
+      loop: true,
+      easing: 'easeOutExpo',
     });
 
   }, []);
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid">
-      {/* Data Dust Particles */}
+      {/* Enhanced Data Dust Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(25)].map((_, i) => (
           <div 
             key={i} 
-            className="dust-particle absolute w-1 h-1 bg-white/20 rounded-full"
+            className="dust-particle absolute w-0.5 h-0.5 bg-white/30 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               bottom: `${Math.random() * 100}%`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-              animationDelay: `${Math.random() * 2}s`
+              animationDuration: `${4 + Math.random() * 5}s`,
+              animationDelay: `${Math.random() * 3}s`
             }}
           />
         ))}
+      </div>
+
+      {/* Animated Glow Rings */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none">
+        <div className="glow-ring absolute inset-0 border border-white/5 rounded-full" />
+        <div className="glow-ring absolute inset-10 border border-white/5 rounded-full" />
+        <div className="glow-ring absolute inset-20 border border-teal-500/10 rounded-full" />
       </div>
 
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black pointer-events-none" />
       
       <div className="relative z-10 text-center max-w-5xl px-6">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
+        {/* Enhanced Badge with stagger */}
+        <div 
+          ref={badgeRef}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8 opacity-0"
+        >
           <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
-          <span className="text-xs font-mono text-white/60 tracking-wider">SYSTEM ONLINE v1.0</span>
+          <span className="text-xs font-mono text-white/60 tracking-widest">SYSTEM ONLINE v1.0</span>
         </div>
 
         <h1 
@@ -145,9 +192,9 @@ export default function HeroSection() {
         </div>
       </div>
       
-      {/* Decorative Grid Lines */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      {/* Decorative Grid Lines with reveal */}
+      <div className="hero-decor absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0" />
+      <div className="hero-decor absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0" />
     </section>
   );
 }
