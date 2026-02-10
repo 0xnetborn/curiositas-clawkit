@@ -19,7 +19,7 @@
 - [x] Add a "Trusted By" or "Built With" logos strip near the footer.
 
 ### 3. Technical Debt
-- [ ] Ensure all images have explicit width/height to prevent CLS (Cumulative Layout Shift).
+- [x] Ensure all images have explicit width/height to prevent CLS (Cumulative Layout Shift).
 - [ ] Audit `globals.css` for unused variables.
 
 ### 4. Dashboard Enhancements
@@ -37,5 +37,5 @@
 
 ---
 
-*Last Run: February 10, 2026, 3:36 AM (Europe/Rome)*
+*Last Run: February 10, 2026, 4:06 AM (Europe/Rome)*
 *Status: RUNNING*

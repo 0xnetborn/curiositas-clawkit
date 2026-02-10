@@ -66,7 +66,9 @@ export default function TrustedBySection() {
               {logo.svg ? (
                 <img 
                   src={logo.svg} 
-                  alt={logo.alt} 
+                  alt={logo.alt}
+                  width="32"
+                  height="32"
                   className="h-6 md:h-8 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300"
                 />
               ) : (
