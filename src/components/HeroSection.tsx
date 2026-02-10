@@ -129,8 +129,8 @@ export default function HeroSection() {
           ref={subtitleRef}
           className="text-lg md:text-xl lg:text-2xl text-white/40 font-light max-w-2xl mx-auto mb-12 opacity-0"
         >
-          High-performance AI orchestration. <br className="hidden md:block" />
-          Deploy intelligent agents with surgical precision.
+          Deploy AI squads that work, ship, and scale. <br className="hidden md:block" />
+          Automated workflows for solopreneurs.
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
