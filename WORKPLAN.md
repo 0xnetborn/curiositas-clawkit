@@ -54,6 +54,9 @@
 
 ---
 
-*Last Run: February 10, 2026, 12:36 PM (Europe/Rome)*
-*Status: TASK COMPLETED - Implemented dark/light theme toggle with smooth transitions and theme persistence*
+*Last Run: February 10, 2026, 1:06 PM (Europe/Rome)*
+*Status: TASK COMPLETED - Added robots.txt and sitemap.xml for SEO*
+
+### New Task Added (Pending)
+- [ ] Add robots.txt and sitemap.xml for better SEO (public folder)
 
