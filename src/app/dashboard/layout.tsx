@@ -58,6 +58,32 @@ export default function DashboardLayout({
           </nav>
         </div>
 
+        {/* System Health Indicator */}
+        <div className="p-4 border-t border-white/5">
+          <div className="bg-gradient-to-r from-teal-500/10 to-emerald-500/5 border border-teal-500/20 rounded-lg p-3">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
+              <span className="text-[10px] font-mono text-teal-400 tracking-wider">SYSTEM HEALTH</span>
+            </div>
+            <div className="space-y-1.5">
+              <div className="flex justify-between text-[9px] text-white/40 font-mono">
+                <span>API LATENCY</span>
+                <span className="text-teal-500">24ms</span>
+              </div>
+              <div className="h-1 bg-white/5 rounded-full overflow-hidden">
+                <div className="h-full bg-teal-500 rounded-full" style={{ width: '24%' }} />
+              </div>
+              <div className="flex justify-between text-[9px] text-white/40 font-mono">
+                <span>MEMORY</span>
+                <span className="text-emerald-400">1.2GB</span>
+              </div>
+              <div className="h-1 bg-white/5 rounded-full overflow-hidden">
+                <div className="h-full bg-emerald-500 rounded-full" style={{ width: '48%' }} />
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* User Profile */}
         <div className="p-4 border-t border-white/5">
           <div className="flex items-center gap-3">

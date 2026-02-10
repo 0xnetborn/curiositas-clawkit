@@ -23,7 +23,7 @@
 - [x] Audit `globals.css` for unused variables.
 
 ### 4. Dashboard Enhancements
-- [ ] Add "System Health" indicator to Dashboard Sidebar.
+- [x] Add "System Health" indicator to Dashboard Sidebar.
 - [ ] Create a 404 page with style (maybe a "404: Agent Lost in Void" animation).
 
 ### 5. Experiments (Low Priority)
@@ -37,5 +37,5 @@
 
 ---
 
-*Last Run: February 10, 2026, 4:36 AM (Europe/Rome)*
+*Last Run: February 10, 2026, 5:06 AM (Europe/Rome)*
 *Status: RUNNING*
