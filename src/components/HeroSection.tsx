@@ -118,7 +118,7 @@ export default function HeroSection() {
 
         <h1 
           ref={titleRef}
-          className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-tight opacity-0"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-tight opacity-0"
         >
           <span ref={textRef} className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40 font-mono">
             Loading...
@@ -127,7 +127,7 @@ export default function HeroSection() {
         
         <p 
           ref={subtitleRef}
-          className="text-xl md:text-2xl text-white/40 font-light max-w-2xl mx-auto mb-12 opacity-0"
+          className="text-lg md:text-xl lg:text-2xl text-white/40 font-light max-w-2xl mx-auto mb-12 opacity-0"
         >
           High-performance AI orchestration. <br className="hidden md:block" />
           Deploy intelligent agents with surgical precision.

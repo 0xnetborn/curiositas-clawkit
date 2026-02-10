@@ -52,7 +52,7 @@ export default function SquadSection() {
           </div>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {agents.map((agent, i) => (
             <SpotlightCard key={i} className="group relative p-6 bg-white/5 border border-white/5 hover:border-white/20 transition-colors opacity-0 cursor-pointer">
               <div className="relative z-10">
