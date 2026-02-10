@@ -1,4 +1,6 @@
+# Robots.txt for Curiositas ClawKit
 User-agent: *
 Allow: /
 
-Sitemap: https://curiokit.com/sitemap.xml
+# Sitemap
+Sitemap: https://curiositas-clawkit-demo.vercel.app/sitemap.xml
