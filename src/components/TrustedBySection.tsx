@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
+import Image from 'next/image';
 
 export default function TrustedBySection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -64,12 +65,13 @@ export default function TrustedBySection() {
               className="trusted-logo opacity-0 flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors duration-300 cursor-default"
             >
               {logo.svg ? (
-                <img 
+                <Image 
                   src={logo.svg} 
                   alt={logo.alt}
-                  width="32"
-                  height="32"
+                  width={32}
+                  height={32}
                   className="h-6 md:h-8 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300"
+                  priority={index < 2}
                 />
               ) : (
                 <span className="text-lg md:text-xl font-semibold">{logo.text}</span>

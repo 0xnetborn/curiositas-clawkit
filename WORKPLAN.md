@@ -87,3 +87,19 @@
 
 *Last Run: February 10, 2026, 4:06 PM (Europe/Rome)*
 *Status: TASK COMPLETED - Added DocsSection with 4 accordion items and Anime.js animations*
+
+### New Task Added (Pending)
+- [x] Add scroll to top floating button with smooth animation
+
+---
+
+*Last Run: February 10, 2026, 3:36 PM (Europe/Rome)*
+*Status: TASK COMPLETED - Added Newsletter section with email signup form and Anime.js animations*
+
+### New Task Added (Pending)
+- [ ] Optimize images using Next.js Image component for better performance and CLS prevention
+
+---
+
+*Last Run: February 10, 2026, 5:06 PM (Europe/Rome)*
+*Status: TASK COMPLETED - Optimized images using Next.js Image component in TrustedBySection*
