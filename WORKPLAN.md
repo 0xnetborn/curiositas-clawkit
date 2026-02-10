@@ -20,7 +20,7 @@
 
 ### 3. Technical Debt
 - [x] Ensure all images have explicit width/height to prevent CLS (Cumulative Layout Shift).
-- [ ] Audit `globals.css` for unused variables.
+- [x] Audit `globals.css` for unused variables.
 
 ### 4. Dashboard Enhancements
 - [ ] Add "System Health" indicator to Dashboard Sidebar.
@@ -37,5 +37,5 @@
 
 ---
 
-*Last Run: February 10, 2026, 4:06 AM (Europe/Rome)*
+*Last Run: February 10, 2026, 4:36 AM (Europe/Rome)*
 *Status: RUNNING*
