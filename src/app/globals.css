@@ -90,6 +90,27 @@ section[id] {
 /* Global Interactive States */
 a, button {
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Focus Ring for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Pulse Accent Animation */
+@keyframes pulse-teal {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(20, 184, 166, 0);
+  }
+}
+
+.animate-pulse-teal {
+  animation: pulse-teal 2s infinite;
 }
 
 /* Konami Code Easter Egg Effect */

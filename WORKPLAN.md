@@ -13,6 +13,7 @@
 - [x] Add subtle animated particles or "data dust" to the Hero section background.
 - [x] Improve mobile responsiveness (ensure grid collapses correctly on < 768px).
 - [x] Add hover states to Pricing cards (scale up + glow).
+- [x] Add pulse-teal animation for accent elements & improved focus-visible states for accessibility.
 
 ### 2. Content & Copy
 - [x] Refine Hero subtitle to be more punchy ("Deploy AI squads...").
@@ -37,5 +38,5 @@
 
 ---
 
-*Last Run: February 10, 2026, 6:06 AM (Europe/Rome)*
+*Last Run: February 10, 2026, 6:36 AM (Europe/Rome)*
 *Status: RUNNING*
