@@ -1,19 +1,26 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { animate, createTimeline } from 'animejs';
 import Image from 'next/image';
 
+const terminalLines = [
+  "> INITIALIZING NEURAL CORE...",
+  "> LOADING AGENT SQUAD...",
+  "> ESTABLISHING UPLINK...",
+  "> SYSTEM READY."
+];
+
 export default function LoadingScreen({ onComplete }: { onComplete?: () => void }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [terminalIndex, setTerminalIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
 
   useEffect(() => {
     if (!containerRef.current) return;
 
     const tl = createTimeline({
       onComplete: () => {
-        // Exit Animation: Curtain Up
         animate(containerRef.current!, {
           translateY: '-100%',
           duration: 800,
@@ -25,34 +32,64 @@ export default function LoadingScreen({ onComplete }: { onComplete?: () => void 
       }
     });
 
-    // 1. Fade In Elements (Fast)
-    tl.add('.loader-content', {
+    // Fade In Logo
+    tl.add('.loader-logo', {
       opacity: [0, 1],
-      scale: [0.95, 1],
-      duration: 600,
+      scale: [0.9, 1],
+      duration: 800,
       easing: 'outExpo',
     }, 0);
 
-    // 2. Pulse Ring (Short loops)
-    tl.add('.pulse-ring', {
-      scale: [1, 1.5],
-      opacity: [0.8, 0],
-      duration: 400,
-      easing: 'outSine',
-      loop: 2,
-    }, 0);
+  }, [onComplete]);
 
-    // Safety Timeout: Force complete after 1.5s
-    timeoutRef.current = setTimeout(() => {
-      tl.pause();
-      if (tl.began) { // If we started, try to finish
-        tl.seek(tl.duration);
+  // Independent Terminal Effect
+  useEffect(() => {
+    if (terminalIndex >= terminalLines.length) return;
+
+    const line = terminalLines[terminalIndex];
+    let charIndex = 0;
+
+    const interval = setInterval(() => {
+      if (charIndex < line.length) {
+        setDisplayedText(prev => prev + line[charIndex]);
+        charIndex++;
+      } else {
+        clearInterval(interval);
+        // Pause before next line or exit
+        setTimeout(() => {
+          setTerminalIndex(prev => {
+            if (prev + 1 >= terminalLines.length) {
+               // Trigger exit after a short delay
+               setTimeout(() => {
+                  // We need to find the timeline and finish it, but simpler to call logic outside
+                  // Actually, let's just let the manual timeout handle exit below
+               }, 500);
+               return prev + 1;
+            }
+            return prev;
+          });
+          setDisplayedText(prev => prev + "\n");
+        }, 200);
       }
-    }, 1500);
+    }, 30); // Typing speed
 
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
+    return () => clearInterval(interval);
+  }, [terminalIndex]);
+
+  // Force Exit after 2.5s max
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Logic to force close if stuck (handled by parent timeout usually, but we are custom here)
+      if (containerRef.current) {
+        animate(containerRef.current, {
+            translateY: '-100%',
+            duration: 800,
+            ease: 'inOutExpo'
+        });
+        if(onComplete) onComplete();
+      }
+    }, 2500);
+    return () => clearTimeout(timer);
   }, [onComplete]);
 
   return (
@@ -60,43 +97,39 @@ export default function LoadingScreen({ onComplete }: { onComplete?: () => void 
       ref={containerRef}
       className="fixed inset-0 z-[9999] bg-black flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Animated Grid Background */}
-      <div className="absolute inset-0 opacity-30 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:3rem_3rem]" />
+      {/* Background Grid */}
+      <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:3rem_3rem]" />
       
-      {/* Radial Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
+      {/* Glow */}
+      <div className="absolute inset-0 bg-gradient-to-b from-teal-900/10 via-black/50 to-black pointer-events-none" />
 
-      <div className="loader-content relative z-10 flex flex-col items-center">
-        {/* Logo Container */}
-        <div className="relative w-24 h-24 mb-8">
-           {/* Glow Effect */}
-           <div className="absolute inset-0 bg-teal-500/20 blur-xl rounded-full animate-pulse" />
-           
-           {/* Pulse Ring */}
-           <div className="absolute inset-0 border border-white/10 rounded-full scale-100 pulse-ring pointer-events-none" />
-
-           {/* REAL LOGO */}
-           <div className="relative w-full h-full">
-             <Image 
-              src="/logo.webp" 
-              alt="CurioKit Logo" 
-              fill
-              className="object-contain drop-shadow-[0_0_15px_rgba(20,184,166,0.3)]"
-              priority
-            />
-           </div>
+      <div className="loader-logo relative z-10 flex flex-col items-center">
+        {/* Logo */}
+        <div className="relative w-24 h-24 mb-6">
+           <div className="absolute inset-0 bg-teal-500/20 blur-xl rounded-full" />
+           <Image 
+            src="/logo.webp" 
+            alt="CurioKit Logo" 
+            fill
+            className="object-contain drop-shadow-[0_0_15px_rgba(20,184,166,0.5)]"
+            priority
+          />
         </div>
-
-        {/* Brand Name */}
-        <h1 className="text-3xl font-bold font-mono tracking-widest text-white mb-6">
+        <h1 className="text-3xl font-bold font-mono tracking-widest text-white mb-8 drop-shadow-lg">
           CURIOKIT
         </h1>
 
-        {/* Status Text */}
-        <div className="flex items-center gap-3 text-xs font-mono text-white/40 tracking-[0.3em] uppercase">
-          <span className="animate-pulse">Initializing</span>
-          <span className="text-white/20">//</span>
-          <span className="text-teal-500">System Ready</span>
+        {/* Terminal Output */}
+        <div className="w-full max-w-md bg-black/50 border border-white/10 p-4 font-mono text-xs text-teal-500 shadow-2xl backdrop-blur-sm rounded">
+          <div className="flex gap-1.5 mb-2 border-b border-white/5 pb-2">
+            <div className="w-2 h-2 rounded-full bg-white/20" />
+            <div className="w-2 h-2 rounded-full bg-white/20" />
+            <div className="w-2 h-2 rounded-full bg-white/20" />
+          </div>
+          <div className="whitespace-pre-wrap leading-relaxed">
+            {displayedText}
+            <span className="animate-blink">_</span>
+          </div>
         </div>
       </div>
     </div>

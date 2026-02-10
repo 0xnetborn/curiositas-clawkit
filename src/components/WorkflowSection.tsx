@@ -59,7 +59,7 @@ export default function WorkflowSection() {
                       <div className="hidden md:block absolute top-1/2 left-full w-full h-px bg-white/5 -z-10" />
                     )}
                     
-                    <div className="h-24 p-4 border border-white/10 bg-black hover:bg-white/5 hover:border-white/30 transition-all flex flex-col justify-between">
+                    <div className="h-24 p-4 border border-white/10 bg-black hover:bg-white/5 hover:border-white/30 transition-all flex flex-col justify-between cursor-pointer">
                       <span className="text-[10px] font-mono text-white/30">0{s + 1}</span>
                       <span className="text-sm font-medium text-white tracking-wider">{step}</span>
                     </div>

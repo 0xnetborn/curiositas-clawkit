@@ -71,7 +71,7 @@ export default function PricingSection() {
                 ))}
               </ul>
 
-              <button className="w-full py-3 border border-white/20 text-white/80 text-xs font-medium tracking-wide hover:bg-white hover:text-black hover:border-transparent transition-all">
+              <button className="w-full py-3 border border-white/20 text-white/80 text-xs font-medium tracking-wide hover:bg-white hover:text-black hover:border-transparent transition-all cursor-pointer">
                 SELECT PLAN
               </button>
             </div>

@@ -61,7 +61,7 @@ export default function FeaturesSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((f, i) => (
-            <SpotlightCard key={i} className="feature-card bg-white/5 border border-white/5 p-8 group relative opacity-0">
+            <SpotlightCard key={i} className="feature-card bg-white/5 border border-white/5 p-8 group relative cursor-pointer opacity-0">
               <div className="relative z-10">
                 <div className="w-10 h-10 mb-6 text-white/40 group-hover:text-white transition-colors">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="square">
