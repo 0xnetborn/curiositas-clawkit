@@ -69,3 +69,13 @@
 
 *Last Run: February 10, 2026, 2:36 PM (Europe/Rome)*
 *Status: TASK COMPLETED - Integrated KonamiEasterEgg component into layout.tsx*
+
+---
+
+*Last Run: February 10, 2026, 3:06 PM (Europe/Rome)*
+*Status: TASK COMPLETED - Added "Scroll to Top" floating button with smooth animation*
+
+---
+
+### New Task Added (Pending)
+- [ ] Add "Scroll to Top" floating button with smooth animation (appears on scroll)
