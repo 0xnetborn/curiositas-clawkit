@@ -46,5 +46,5 @@
 
 ---
 
-*Last Run: February 10, 2026, 10:06 AM (Europe/Rome)*
-*Status: TASK COMPLETED - Added schema.org structured data (Organization, WebSite, WebPage schemas)*
+*Last Run: February 10, 2026, 11:36 AM (Europe/Rome)*
+*Status: TASK COMPLETED - Added pulse-teal animation to CTA buttons in Pricing & Landing Page*

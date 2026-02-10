@@ -83,8 +83,8 @@ export default function PricingSection() {
                   ))}
                 </ul>
 
-                <button className="w-full py-3 border border-white/20 text-white/80 text-xs font-medium tracking-wide hover:bg-white hover:text-black hover:border-transparent transition-all cursor-pointer relative overflow-hidden group-hover:border-teal-500/30">
-                  <span className="relative z-10">SELECT PLAN</span>
+                <button className="w-full py-3 border border-white/20 text-white/80 text-xs font-medium hover:bg-white hover:text-black hover:border-transparent transition-all cursor-pointer relative overflow-hidden group-hover:border-teal-500/30">
+                  <span className="relative z-10 animate-pulse-teal">SELECT PLAN</span>
                 </button>
               </div>
             </div>
@@ -94,7 +94,7 @@ export default function PricingSection() {
         {/* Talk to Sales CTA */}
         <div className="mt-12 text-center">
           <p className="text-sm text-white/40 mb-4">Need a custom enterprise solution?</p>
-          <button className="px-6 py-2 bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-400 text-xs font-mono uppercase tracking-widest transition-all cursor-pointer">
+          <button className="px-6 py-2 bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-400 text-xs font-mono uppercase tracking-widest transition-all cursor-pointer animate-pulse-teal">
             Talk to Sales
           </button>
         </div>

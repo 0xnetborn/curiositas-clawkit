@@ -45,7 +45,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button className="group relative px-8 py-4 bg-white text-black font-medium text-sm tracking-wide overflow-hidden w-full sm:w-auto">
               <div className="absolute inset-0 bg-zinc-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-              <span className="relative z-10 group-hover:text-black transition-colors uppercase">Start Deployment</span>
+              <span className="relative z-10 group-hover:text-black transition-colors uppercase animate-pulse-teal">Start Deployment</span>
             </button>
             
             <button className="group px-8 py-4 border border-white/10 text-white/60 font-medium text-sm tracking-wide hover:text-white hover:border-white/40 transition-all uppercase w-full sm:w-auto">
