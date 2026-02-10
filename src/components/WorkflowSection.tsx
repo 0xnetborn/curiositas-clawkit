@@ -34,7 +34,7 @@ export default function WorkflowSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-32 px-6 bg-black border-t border-white/5 relative overflow-hidden">
+    <section ref={sectionRef} id="workflow" className="py-32 px-6 bg-black border-t border-white/5 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 className="text-sm font-mono text-white/40 tracking-widest uppercase mb-16">/// OPERATIONAL PIPELINES</h2>
 

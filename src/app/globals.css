@@ -62,3 +62,12 @@ body::before {
   background: rgba(20, 184, 166, 0.3); /* Teal-500 with opacity */
   color: white;
 }
+
+/* Smooth Scrolling for Anchors */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 100px; /* Compensate fixed navbar */
+}
