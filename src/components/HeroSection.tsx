@@ -126,9 +126,13 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid">
-      {/* Enhanced Data Dust Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <section 
+      ref={containerRef} 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid"
+      aria-labelledby="hero-title"
+    >
+      {/* Enhanced Data Dust Particles - Decorative, hidden from screen readers */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         {[...Array(25)].map((_, i) => (
           <div 
             key={i} 
@@ -181,12 +185,19 @@ export default function HeroSection() {
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-          <Link href="/dashboard" className="hero-btn group relative px-8 py-4 bg-white text-black font-medium text-sm tracking-wide overflow-hidden opacity-0 inline-block cursor-pointer">
+          <Link 
+            href="/dashboard" 
+            className="hero-btn group relative px-8 py-4 bg-white text-black font-medium text-sm tracking-wide overflow-hidden opacity-0 inline-block cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded"
+            aria-label="Initiate deployment - Go to dashboard"
+          >
             <div className="absolute inset-0 bg-zinc-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
             <span className="relative z-10 group-hover:text-black transition-colors">INITIATE DEPLOYMENT</span>
           </Link>
           
-          <button className="hero-btn group px-8 py-4 border border-white/20 text-white/60 font-medium text-sm tracking-wide hover:text-white hover:border-white/40 transition-all opacity-0 cursor-pointer">
+          <button 
+            className="hero-btn group px-8 py-4 border border-white/20 text-white/60 font-medium text-sm tracking-wide hover:text-white hover:border-white/40 transition-all opacity-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded"
+            aria-label="View documentation"
+          >
             VIEW DOCUMENTATION
           </button>
         </div>

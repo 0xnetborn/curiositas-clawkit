@@ -24,20 +24,23 @@ export default function TestimonialsSection() {
   }, []);
 
   return (
-    <section className="py-32 px-6 bg-black border-t border-white/5">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12" ref={containerRef}>
-        {quotes.map((q, i) => (
-          <div key={i} className="group cursor-default">
-            <div className="text-4xl text-white/10 mb-4 font-serif">"</div>
-            <p className="text-lg text-white/80 font-light leading-relaxed mb-6 group-hover:text-white transition-colors">
-              {q.text}
-            </p>
-            <div className="h-px w-8 bg-white/20 mb-4 group-hover:w-full transition-all duration-700 ease-out" />
-            <span className="text-xs font-mono text-teal-500 tracking-widest uppercase">
-              {q.author}
-            </span>
-          </div>
-        ))}
+    <section className="py-32 px-6 bg-black border-t border-white/5" aria-labelledby="testimonials-heading">
+      <div className="max-w-7xl mx-auto">
+        <h2 id="testimonials-heading" className="sr-only">Customer Testimonials</h2>
+        <div className="grid md:grid-cols-3 gap-12" ref={containerRef} role="list" aria-label="Customer testimonials">
+          {quotes.map((q, i) => (
+            <div key={i} className="group cursor-default" role="listitem">
+              <div className="text-4xl text-white/10 mb-4 font-serif" aria-hidden="true">"</div>
+              <p className="text-lg text-white/80 font-light leading-relaxed mb-6 group-hover:text-white transition-colors">
+                {q.text}
+              </p>
+              <div className="h-px w-8 bg-white/20 mb-4 group-hover:w-full transition-all duration-700 ease-out" />
+              <span className="text-xs font-mono text-teal-500 tracking-widest uppercase">
+                {q.author}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

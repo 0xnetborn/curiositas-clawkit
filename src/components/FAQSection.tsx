@@ -101,28 +101,31 @@ export default function FAQSection() {
   }, []);
 
   return (
-    <section className="py-24 px-6 bg-black">
+    <section className="py-24 px-6 bg-black" aria-labelledby="faq-heading">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 border border-teal-500/20 bg-teal-500/5 mb-6">
             <span className="w-1.5 h-1.5 bg-teal-500" />
             <span className="text-[10px] font-mono text-teal-500 tracking-widest uppercase">FAQ</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
+          <h2 id="faq-heading" className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
             Common <span className="text-white/40">Questions</span>
           </h2>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4" role="list" aria-label="Frequently asked questions">
           {faqs.map((faq, index) => (
             <div
               key={index}
               className="faq-item border border-white/10 bg-white/5 rounded-lg overflow-hidden hover:border-teal-500/30 transition-colors"
+              role="listitem"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-teal-500/50"
+                className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-teal-500/50 rounded-lg"
                 aria-expanded={openIndex === index}
+                aria-controls={`faq-content-${index}`}
+                id={`faq-trigger-${index}`}
               >
                 <span className="text-base font-medium text-white/90 pr-4">
                   {faq.question}
@@ -134,6 +137,7 @@ export default function FAQSection() {
                   viewBox="0 0 24 24"
                   fill="none"
                   className="text-teal-500 flex-shrink-0"
+                  aria-hidden="true"
                 >
                   <path
                     d="M6 9L12 15L18 9"
@@ -146,6 +150,9 @@ export default function FAQSection() {
               </button>
               <div
                 ref={(el) => { contentRefs.current[index] = el; }}
+                id={`faq-content-${index}`}
+                role="region"
+                aria-labelledby={`faq-trigger-${index}`}
                 className="h-0 overflow-hidden opacity-0"
               >
                 <div className="px-6 pb-6 pt-2 text-white/50 leading-relaxed">
@@ -160,7 +167,7 @@ export default function FAQSection() {
         <div className="text-center mt-12">
           <p className="text-white/40 text-sm">
             Still have questions?{' '}
-            <a href="#" className="text-teal-500 hover:text-teal-400 transition-colors">
+            <a href="#" className="text-teal-500 hover:text-teal-400 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-black rounded">
               Check our documentation →
             </a>
           </p>

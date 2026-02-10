@@ -38,12 +38,16 @@ export default function Footer() {
   ];
 
   return (
-    <footer className={`border-t backdrop-blur-sm transition-colors ${mounted && theme === 'light' ? 'border-slate-200 bg-white/50' : 'border-white/10 bg-black/50'}`}>
+    <footer 
+      className={`border-t backdrop-blur-sm transition-colors ${mounted && theme === 'light' ? 'border-slate-200 bg-white/50' : 'border-white/10 bg-black/50'}`}
+      role="contentinfo"
+      aria-label="Site footer"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
+            <Link href="/" className="flex items-center space-x-2 mb-4" aria-label="CurioKit home">
               <div className="w-8 h-8 bg-gradient-to-br from-teal-400 to-teal-600 rounded-lg flex items-center justify-center">
                 <span className="text-black font-bold text-sm">CK</span>
               </div>
@@ -52,7 +56,7 @@ export default function Footer() {
             <p className={`text-sm mb-4 transition-colors ${mounted && theme === 'light' ? 'text-slate-600' : 'text-gray-400'}`}>
               Deploy AI agent squads for marketing & operations.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4" role="list" aria-label="Social media links">
               {socials.map((social) => (
                 <a
                   key={social.name}
@@ -60,9 +64,10 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.aria}
+                  role="listitem"
                   className={`transition-colors ${mounted && theme === 'light' ? 'text-slate-500 hover:text-teal-600' : 'text-gray-400 hover:text-teal-400'}`}
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d={social.icon} />
                   </svg>
                 </a>
@@ -73,12 +78,12 @@ export default function Footer() {
           {/* Product Links */}
           <div>
             <h3 className={`font-semibold text-sm mb-4 transition-colors ${mounted && theme === 'light' ? 'text-slate-900' : ''}`}>Product</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2" role="list" aria-label="Product links">
               {links.product.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className={`text-sm transition-colors ${mounted && theme === 'light' ? 'text-slate-500 hover:text-slate-900' : 'text-gray-400 hover:text-teal-400'}`}
+                    className={`text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-black rounded ${mounted && theme === 'light' ? 'text-slate-500 hover:text-slate-900' : 'text-gray-400 hover:text-teal-400'}`}
                   >
                     {link.label}
                   </Link>
@@ -90,12 +95,12 @@ export default function Footer() {
           {/* Company Links */}
           <div>
             <h3 className={`font-semibold text-sm mb-4 transition-colors ${mounted && theme === 'light' ? 'text-slate-900' : ''}`}>Company</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2" role="list" aria-label="Company links">
               {links.company.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className={`text-sm transition-colors ${mounted && theme === 'light' ? 'text-slate-500 hover:text-slate-900' : 'text-gray-400 hover:text-teal-400'}`}
+                    className={`text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-black rounded ${mounted && theme === 'light' ? 'text-slate-500 hover:text-slate-900' : 'text-gray-400 hover:text-teal-400'}`}
                   >
                     {link.label}
                   </Link>
@@ -107,12 +112,12 @@ export default function Footer() {
           {/* Legal Links */}
           <div>
             <h3 className={`font-semibold text-sm mb-4 transition-colors ${mounted && theme === 'light' ? 'text-slate-900' : ''}`}>Legal</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2" role="list" aria-label="Legal links">
               {links.legal.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className={`text-sm transition-colors ${mounted && theme === 'light' ? 'text-slate-500 hover:text-slate-900' : 'text-gray-400 hover:text-teal-400'}`}
+                    className={`text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-black rounded ${mounted && theme === 'light' ? 'text-slate-500 hover:text-slate-900' : 'text-gray-400 hover:text-teal-400'}`}
                   >
                     {link.label}
                   </Link>
