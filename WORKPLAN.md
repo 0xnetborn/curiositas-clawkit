@@ -111,3 +111,14 @@
 
 *Last Run: February 10, 2026, 7:10 PM (Europe/Rome)*
 *Status: TASK COMPLETED - Added comprehensive accessibility improvements (ARIA labels, keyboard navigation, focus management, skip link, landmark roles)*
+
+### New Task Added (Pending)
+- [x] Add Twitter card meta tags for better social sharing on X/Twitter
+
+---
+
+*Last Run: February 10, 2026, 8:13 PM (Europe/Rome)*
+*Status: TASK COMPLETED - Added Twitter card meta tags (card type, site, title, description, images)*
+
+### New Task Added (Pending)
+- [ ] Add robots.txt and sitemap.xml for SEO optimization

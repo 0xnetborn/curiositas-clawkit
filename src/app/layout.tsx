@@ -39,6 +39,13 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
+  twitter: {
+    card: "summary_large_image",
+    site: "@curiositas",
+    title: "CurioKit | AI Orchestration for Founders",
+    description: "Deploy your AI squad in seconds. No configuration required.",
+    images: ['/og'],
+  },
   alternates: {
     canonical: 'https://curiokit.com',
   },
