@@ -121,4 +121,9 @@
 *Status: TASK COMPLETED - Added robots.txt and sitemap.xml for SEO optimization*
 
 ### New Task Added (Pending)
-- [ ] Add canonical URL tags to all pages for SEO duplicate content prevention
+- [x] Add canonical URL tags to all pages for SEO duplicate content prevention
+
+---
+
+*Last Run: February 10, 2026, 11:41 PM (Europe/Rome)*
+*Status: TASK COMPLETED - Canonical URL already implemented via Next.js Metadata API in layout.tsx*
