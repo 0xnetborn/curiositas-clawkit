@@ -4,6 +4,7 @@ import "./globals.css";
 import PageWrapper from "./PageWrapper";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeContext";
+import KonamiEasterEgg from "@/components/KonamiEasterEgg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -116,6 +117,7 @@ export default function RootLayout({
           <PageWrapper>
             {children}
             <Footer />
+            <KonamiEasterEgg />
           </PageWrapper>
         </ThemeProvider>
       </body>
