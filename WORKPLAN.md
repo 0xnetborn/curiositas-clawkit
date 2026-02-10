@@ -57,3 +57,11 @@
 *Last Run: February 10, 2026, 1:36 PM (Europe/Rome)*
 *Status: TASK COMPLETED - Enhanced landing page animations (Hero stagger, Feature reveal)*
 
+### New Task Added (Pending)
+- [x] Add FAQ section to landing page (accordion style with smooth expand/collapse animations)
+
+---
+
+*Last Run: February 10, 2026, 2:06 PM (Europe/Rome)*
+*Status: TASK COMPLETED - Added FAQ section with 6 questions and Anime.js accordion animations*
+

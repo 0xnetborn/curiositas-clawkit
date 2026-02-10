@@ -5,6 +5,7 @@ import SquadSection from '@/components/SquadSection';
 import WorkflowSection from '@/components/WorkflowSection';
 import PricingSection from '@/components/PricingSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import FAQSection from '@/components/FAQSection';
 import LoadingScreen from '@/components/LoadingScreen';
 import TrustedBySection from '@/components/TrustedBySection';
 import KonamiEasterEgg from '@/components/KonamiEasterEgg';
@@ -20,6 +21,7 @@ export default function Home() {
       <SquadSection />
       <WorkflowSection />
       <TestimonialsSection />
+      <FAQSection />
       <PricingSection />
       <TrustedBySection />
 
