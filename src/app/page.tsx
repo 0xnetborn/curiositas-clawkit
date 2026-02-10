@@ -6,6 +6,7 @@ import WorkflowSection from '@/components/WorkflowSection';
 import PricingSection from '@/components/PricingSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import LoadingScreen from '@/components/LoadingScreen';
+import TrustedBySection from '@/components/TrustedBySection';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <WorkflowSection />
       <TestimonialsSection />
       <PricingSection />
+      <TrustedBySection />
 
       {/* Final CTA - Tech Style */}
       <section className="py-32 px-6 border-t border-white/5 bg-grid relative overflow-hidden">

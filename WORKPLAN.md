@@ -16,7 +16,7 @@
 
 ### 2. Content & Copy
 - [x] Refine Hero subtitle to be more punchy ("Deploy AI squads...").
-- [ ] Add a "Trusted By" or "Built With" logos strip near the footer.
+- [x] Add a "Trusted By" or "Built With" logos strip near the footer.
 
 ### 3. Technical Debt
 - [ ] Ensure all images have explicit width/height to prevent CLS (Cumulative Layout Shift).
@@ -37,5 +37,5 @@
 
 ---
 
-*Last Run: February 10, 2026, 3:06 AM (Europe/Rome)* -> **Manual Run Executed**
+*Last Run: February 10, 2026, 3:36 AM (Europe/Rome)*
 *Status: RUNNING*
