@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { useTheme } from './ThemeContext';
+import TrustedBySection from './TrustedBySection';
 
 export default function Footer() {
   const { theme } = useTheme();
@@ -43,6 +44,11 @@ export default function Footer() {
       role="contentinfo"
       aria-label="Site footer"
     >
+      {/* Built With / Trusted By Strip */}
+      <div className="border-b border-white/5">
+        <TrustedBySection />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}

@@ -52,7 +52,7 @@ export default function TrustedBySection() {
   return (
     <section 
       ref={sectionRef}
-      className="py-8 px-6 border-t border-white/5 bg-black/50 opacity-0 translate-y-8"
+      className="py-8 px-6 border-t border-white/5 opacity-0 translate-y-8"
     >
       <div className="max-w-7xl mx-auto">
         <p className="text-center text-xs font-mono text-white/30 uppercase tracking-[0.2em] mb-8">
