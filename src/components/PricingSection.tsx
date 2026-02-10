@@ -45,35 +45,48 @@ export default function PricingSection() {
 
         <div ref={tableRef} className="grid md:grid-cols-3 border border-white/10 divide-y md:divide-y-0 md:divide-x divide-white/10 bg-white/[0.02]">
           {plans.map((plan, i) => (
-            <div key={i} className="p-8 group hover:bg-white/[0.02] transition-colors relative">
-              <div className="mb-8 flex justify-between items-start">
-                <h3 className="text-lg font-bold text-white">{plan.name}</h3>
-                <div className="text-right">
-                  <span className="text-3xl font-light text-white">€{plan.price}</span>
-                  <span className="text-xs text-white/40 block">/MO</span>
+            <div 
+              key={i} 
+              className="p-8 group hover:bg-white/[0.02] transition-all duration-300 relative overflow-hidden"
+              style={{
+                transform: 'translateZ(0)',
+                backfaceVisibility: 'hidden'
+              }}
+            >
+              {/* Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              
+              {/* Scale & Glow Container */}
+              <div className="relative transform group-hover:scale-[1.02] group-hover:shadow-[0_0_60px_-15px_rgba(20,184,166,0.25)] transition-all duration-300 ease-out">
+                <div className="mb-8 flex justify-between items-start">
+                  <h3 className="text-lg font-bold text-white">{plan.name}</h3>
+                  <div className="text-right">
+                    <span className="text-3xl font-light text-white">€{plan.price}</span>
+                    <span className="text-xs text-white/40 block">/MO</span>
+                  </div>
                 </div>
+
+                <div className="flex gap-2 mb-8">
+                  {plan.specs.map((spec, s) => (
+                    <span key={s} className="text-[10px] font-mono px-1.5 py-0.5 border border-white/10 text-white/60 group-hover:border-teal-500/30 group-hover:text-white/80 transition-colors">
+                      {spec}
+                    </span>
+                  ))}
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {plan.features.map((feat, f) => (
+                    <li key={f} className="text-sm text-white/60 flex items-center gap-3 group-hover:text-white/80 transition-colors">
+                      <span className="w-1 h-1 bg-teal-500 group-hover:bg-teal-400 transition-colors" />
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+
+                <button className="w-full py-3 border border-white/20 text-white/80 text-xs font-medium tracking-wide hover:bg-white hover:text-black hover:border-transparent transition-all cursor-pointer relative overflow-hidden group-hover:border-teal-500/30">
+                  <span className="relative z-10">SELECT PLAN</span>
+                </button>
               </div>
-
-              <div className="flex gap-2 mb-8">
-                {plan.specs.map((spec, s) => (
-                  <span key={s} className="text-[10px] font-mono px-1.5 py-0.5 border border-white/10 text-white/60">
-                    {spec}
-                  </span>
-                ))}
-              </div>
-
-              <ul className="space-y-4 mb-8">
-                {plan.features.map((feat, f) => (
-                  <li key={f} className="text-sm text-white/60 flex items-center gap-3">
-                    <span className="w-1 h-1 bg-teal-500" />
-                    {feat}
-                  </li>
-                ))}
-              </ul>
-
-              <button className="w-full py-3 border border-white/20 text-white/80 text-xs font-medium tracking-wide hover:bg-white hover:text-black hover:border-transparent transition-all cursor-pointer">
-                SELECT PLAN
-              </button>
             </div>
           ))}
         </div>

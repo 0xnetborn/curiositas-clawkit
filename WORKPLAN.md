@@ -12,7 +12,7 @@
 ### 1. Visual Polish (High Priority)
 - [x] Add subtle animated particles or "data dust" to the Hero section background.
 - [x] Improve mobile responsiveness (ensure grid collapses correctly on < 768px).
-- [ ] Add hover states to Pricing cards (scale up + glow).
+- [x] Add hover states to Pricing cards (scale up + glow).
 
 ### 2. Content & Copy
 - [ ] Refine Hero subtitle to be more punchy ("Deploy AI squads...").
@@ -37,5 +37,5 @@
 
 ---
 
-*Last Run: February 10, 2026, 2:06 AM (Europe/Rome)* -> **Manual Run Executed**
+*Last Run: February 10, 2026, 2:36 AM (Europe/Rome)* -> **Manual Run Executed**
 *Status: RUNNING*
