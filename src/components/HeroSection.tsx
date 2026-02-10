@@ -76,10 +76,37 @@ export default function HeroSection() {
       delay: stagger(100),
     }, '-=800');
 
+    // Animate Particles
+    animate('.dust-particle', {
+      translateY: [0, -100],
+      translateX: [0, 20],
+      opacity: [0, 0.6, 0],
+      duration: 4000,
+      delay: stagger(200),
+      loop: true,
+      easing: 'linear',
+    });
+
   }, []);
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid">
+      {/* Data Dust Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={i} 
+            className="dust-particle absolute w-1 h-1 bg-white/20 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              bottom: `${Math.random() * 100}%`,
+              animationDuration: `${3 + Math.random() * 4}s`,
+              animationDelay: `${Math.random() * 2}s`
+            }}
+          />
+        ))}
+      </div>
+
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black pointer-events-none" />
       
