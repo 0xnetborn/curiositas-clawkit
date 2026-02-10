@@ -87,3 +87,8 @@ section[id] {
   50% { transform-origin: right; transform: scaleX(1); }
   100% { transform-origin: right; transform: scaleX(0); }
 }
+
+/* Global Interactive States */
+a, button {
+  cursor: pointer;
+}

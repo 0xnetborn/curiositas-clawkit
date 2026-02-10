@@ -77,6 +77,14 @@ export default function PricingSection() {
             </div>
           ))}
         </div>
+
+        {/* Talk to Sales CTA */}
+        <div className="mt-12 text-center">
+          <p className="text-sm text-white/40 mb-4">Need a custom enterprise solution?</p>
+          <button className="px-6 py-2 bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/30 text-teal-400 text-xs font-mono uppercase tracking-widest transition-all cursor-pointer">
+            Talk to Sales
+          </button>
+        </div>
       </div>
     </section>
   );
