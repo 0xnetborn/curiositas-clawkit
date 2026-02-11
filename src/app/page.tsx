@@ -1,3 +1,4 @@
+import WebGLBackground from '@/components/WebGLBackground';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
@@ -16,6 +17,7 @@ import PageTracker from '@/components/PageTracker';
 export default function Home() {
   return (
     <main id="main-content" className="min-h-screen bg-black text-white selection:bg-teal-500/30">
+      <WebGLBackground />
       <PageTracker path="/" title="CurioKit | AI Orchestration for Founders" />
       <LoadingScreen />
       <KonamiEasterEgg />
