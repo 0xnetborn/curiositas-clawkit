@@ -1,17 +1,20 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
-import { animate, stagger, createTimeline } from 'animejs';
+import { useEffect, useRef, useState, useCallback, lazy } from 'react';
+import { animate, stagger } from 'animejs';
 import SpotlightCard from '@/components/ui/SpotlightCard';
 import { usePageTracking } from '@/components/AnalyticsContext';
-import AnalyticsDashboard from '@/components/AnalyticsDashboard';
-import ChartsWidget from '@/components/ChartsWidget';
-import LiveFeedWidget from '@/components/LiveFeedWidget';
-import QuickActionsWidget from '@/components/QuickActionsWidget';
 import { useToast } from '@/components/ui/Toast';
 import { useKeyboardShortcuts } from '@/components/hooks/useKeyboardShortcuts';
 import KeyboardShortcutsHelp from '@/components/KeyboardShortcutsHelp';
-import SystemStatsWidget from '@/components/SystemStatsWidget';
+import LazyWidget, { 
+  LazyChartsWidget, 
+  LazySystemStatsWidget, 
+  LazyLiveFeedWidget, 
+  LazyAnalyticsDashboard,
+  LazyQuickActionsWidget,
+  WidgetSkeleton
+} from '@/components/LazyWidget';
 
 const metrics = [
   { label: 'TASKS COMPLETED', value: '842', delta: '+12%', trend: 'up' },
@@ -119,17 +122,25 @@ export default function DashboardPage() {
         </div>
 
         {showAnalytics && (
-          <AnalyticsDashboard compact={false} />
+          <LazyWidget fallback={<WidgetSkeleton height="h-96" />}>
+            <LazyAnalyticsDashboard compact={false} />
+          </LazyWidget>
         )}
 
-        {/* Quick Actions Widget */}
-        <QuickActionsWidget />
+        {/* Quick Actions Widget - Lazy Loaded */}
+        <LazyWidget fallback={<WidgetSkeleton height="h-24" />}>
+          <LazyQuickActionsWidget />
+        </LazyWidget>
 
-        {/* Animated Charts Widget */}
-        <ChartsWidget />
+        {/* Charts Widget - Lazy Loaded */}
+        <LazyWidget fallback={<WidgetSkeleton height="h-64" />}>
+          <LazyChartsWidget />
+        </LazyWidget>
 
-        {/* System Stats Widget */}
-        <SystemStatsWidget />
+        {/* System Stats Widget - Lazy Loaded */}
+        <LazyWidget fallback={<WidgetSkeleton height="h-32" />}>
+          <LazySystemStatsWidget />
+        </LazyWidget>
 
         {/* Metrics Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -151,9 +162,11 @@ export default function DashboardPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main: Live Feed */}
+          {/* Main: Live Feed - Lazy Loaded */}
           <div className="lg:col-span-2 space-y-6">
-            <LiveFeedWidget />
+            <LazyWidget fallback={<WidgetSkeleton height="h-80" />}>
+              <LazyLiveFeedWidget />
+            </LazyWidget>
           </div>
 
           {/* Sidebar: Active Squad */}
