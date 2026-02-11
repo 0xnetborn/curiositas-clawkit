@@ -29,14 +29,14 @@ const actions = [
 
 export default function LiveFeedWidget() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const feedRef = useRef<HTMLDivElement>(null);
   const [logs, setLogs] = useState<LogEntry[]>(initialLogs);
   const [isTyping, setIsTyping] = useState(false);
+  const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Initial animation
-    if (feedRef.current) {
-      const items = Array.from(feedRef.current.querySelectorAll('.feed-item'));
+    if (listRef.current) {
+      const items = Array.from(listRef.current.querySelectorAll('.feed-item'));
       animate(items as HTMLElement[], {
         opacity: [0, 1],
         translateX: [-10, 0],
@@ -66,18 +66,15 @@ export default function LiveFeedWidget() {
         return updated;
       });
 
-      // Animate new item
-      if (containerRef.current) {
-        const newItem = containerRef.current.firstElementChild;
-        if (newItem) {
-          animate(newItem as HTMLElement, {
-            opacity: [0, 1],
-            translateX: [-20, 0],
-            duration: 400,
-            easing: 'easeOutQuad'
-          });
+      // Scroll new item into view
+      setTimeout(() => {
+        if (containerRef.current) {
+          const firstItem = containerRef.current.firstElementChild as HTMLElement;
+          if (firstItem) {
+            firstItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
-      }
+      }, 0);
 
     }, 4500);
 
@@ -105,7 +102,7 @@ export default function LiveFeedWidget() {
         </div>
       </div>
       
-      <div ref={feedRef} className="flex-1 space-y-3 overflow-y-auto pr-2 scrollbar-hide">
+      <div ref={containerRef} className="flex-1 space-y-3 overflow-y-auto pr-2 scrollbar-hide">
         {logs.map((log, i) => (
           <div 
             key={`${log.time}-${i}`} 
