@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import CookieConsentBanner from '@/components/CookieConsentBanner';
 
 export default function DashboardLayout({
   children,
@@ -120,6 +121,7 @@ export default function DashboardLayout({
         {/* Page Content */}
         <main className="flex-1 overflow-auto p-8">
           {children}
+          <CookieConsentBanner />
         </main>
       </div>
     </div>

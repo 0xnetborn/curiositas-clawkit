@@ -228,5 +228,6 @@
 
 *Timestamp: February 11, 2026, 6:33 PM (Europe/Rome)*
 - [x] Add GDPR-compliant Cookie Consent Banner with smooth animations, localStorage persistence, and customizable preferences (Accept All/Decline/Settings)
+- [x] **Fix:** Ensure CookieConsentBanner is visible on Dashboard (added to dashboard/layout.tsx)
 
 ---
