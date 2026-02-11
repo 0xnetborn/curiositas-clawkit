@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { animate, stagger, createTimeline } from 'animejs';
 import SpotlightCard from '@/components/ui/SpotlightCard';
+import { usePageTracking } from '@/components/AnalyticsContext';
+import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 
 const metrics = [
   { label: 'TASKS COMPLETED', value: '842', delta: '+12%', trend: 'up' },
@@ -27,6 +29,10 @@ const logs = [
 export default function DashboardPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const feedRef = useRef<HTMLDivElement>(null);
+  const [showAnalytics, setShowAnalytics] = useState(false);
+
+  // Track page view
+  usePageTracking('/dashboard', 'Dashboard | CurioKit');
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -55,6 +61,20 @@ export default function DashboardPage() {
 
   return (
     <div ref={containerRef} className="space-y-8 max-w-7xl mx-auto">
+      {/* Analytics Toggle */}
+      <div className="flex justify-end">
+        <button
+          onClick={() => setShowAnalytics(!showAnalytics)}
+          className="text-xs px-4 py-2 bg-white/5 border border-white/10 text-white/60 hover:text-white hover:border-teal-500/50 transition-colors rounded"
+        >
+          {showAnalytics ? 'Hide Analytics' : '📊 Show Analytics'}
+        </button>
+      </div>
+
+      {showAnalytics && (
+        <AnalyticsDashboard compact={false} />
+      )}
+
       {/* Metrics Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {metrics.map((m, i) => (

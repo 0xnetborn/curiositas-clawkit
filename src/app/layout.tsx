@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeContext";
 import KonamiEasterEgg from "@/components/KonamiEasterEgg";
 import ScrollToTop from "@/components/ScrollToTop";
+import { AnalyticsProvider } from "@/components/AnalyticsContext";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -128,14 +130,17 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <ThemeProvider>
-          <PageWrapper>
-            {children}
-            <Footer />
-            <KonamiEasterEgg />
-            <ScrollToTop />
-          </PageWrapper>
-        </ThemeProvider>
+        <AnalyticsProvider>
+          <AnalyticsTracker />
+          <ThemeProvider>
+            <PageWrapper>
+              {children}
+              <Footer />
+              <KonamiEasterEgg />
+              <ScrollToTop />
+            </PageWrapper>
+          </ThemeProvider>
+        </AnalyticsProvider>
       </body>
     </html>
   );

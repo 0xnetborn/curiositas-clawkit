@@ -11,10 +11,12 @@ import LoadingScreen from '@/components/LoadingScreen';
 import TrustedBySection from '@/components/TrustedBySection';
 import DocsSection from '@/components/DocsSection';
 import KonamiEasterEgg from '@/components/KonamiEasterEgg';
+import PageTracker from '@/components/PageTracker';
 
 export default function Home() {
   return (
     <main id="main-content" className="min-h-screen bg-black text-white selection:bg-teal-500/30">
+      <PageTracker path="/" title="CurioKit | AI Orchestration for Founders" />
       <LoadingScreen />
       <KonamiEasterEgg />
       <Navbar />
