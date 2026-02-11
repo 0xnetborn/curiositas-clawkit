@@ -33,8 +33,7 @@ export default function KeyboardShortcutsHelp({ isOpen, onClose }: KeyboardShort
   const handleClose = () => {
     // Animate out
     animate(backdropRef.current!, { opacity: 0, duration: 150 });
-    animate(modalRef.current!, { opacity: 0, translateY: 20, scale: 0.95, duration: 150 })
-      .finished.then(() => onClose());
+    (animate(modalRef.current!, { opacity: 0, translateY: 20, scale: 0.95, duration: 150 }) as unknown as { finished: Promise<void> }).finished.then(() => onClose());
   };
 
   if (!isOpen) return null;
