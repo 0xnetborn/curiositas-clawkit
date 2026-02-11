@@ -164,3 +164,11 @@
 
 *Last Run: February 11, 2026, 7:05 AM (Europe/Rome)*
 *Status: VERIFIED - Dark/light theme toggle already implemented in ThemeContext, layout.tsx, and Navbar.tsx with smooth CSS transitions and localStorage persistence*
+
+### New Task Added (Pending)
+- [ ] Add animated charts/stats widgets to Dashboard with real-time data simulation
+
+---
+
+*Last Run: February 11, 2026, 9:07 AM (Europe/Rome)*
+*Status: TASK COMPLETED - Added ChartsWidget with animated bar chart, line chart, and stats counters*
