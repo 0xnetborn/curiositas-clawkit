@@ -7,6 +7,7 @@ import { usePageTracking } from '@/components/AnalyticsContext';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 import ChartsWidget from '@/components/ChartsWidget';
 import LiveFeedWidget from '@/components/LiveFeedWidget';
+import QuickActionsWidget from '@/components/QuickActionsWidget';
 import { useToast } from '@/components/ui/Toast';
 
 const metrics = [
@@ -74,6 +75,9 @@ export default function DashboardPage() {
       {showAnalytics && (
         <AnalyticsDashboard compact={false} />
       )}
+
+      {/* Quick Actions Widget */}
+      <QuickActionsWidget />
 
       {/* Animated Charts Widget */}
       <ChartsWidget />
