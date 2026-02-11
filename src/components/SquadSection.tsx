@@ -42,7 +42,7 @@ export default function SquadSection() {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between mb-16">
           <div>
-            <h2 className="text-sm font-mono text-white/40 tracking-widest uppercase mb-2">/// ACTIVE UNITS</h2>
+            <h2 className="text-sm font-mono text-white/40 tracking-widest uppercase mb-2"><span aria-hidden="true" className="text-white/20">&#47;&#47;</span> ACTIVE UNITS</h2>
             <h3 className="text-3xl font-medium text-white">Neural Squad</h3>
           </div>
           <div className="hidden md:flex gap-2">

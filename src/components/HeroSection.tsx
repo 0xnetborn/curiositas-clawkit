@@ -1,8 +1,19 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { createTimeline, stagger, animate } from 'animejs';
 import Link from 'next/link';
+
+// Generate random particles once (outside component to avoid impure function issues)
+function generateParticles(count: number) {
+  return [...Array(count)].map((_, i) => ({
+    key: i,
+    left: `${Math.random() * 100}%`,
+    bottom: `${Math.random() * 100}%`,
+    animationDuration: `${4 + Math.random() * 5}s`,
+    animationDelay: `${Math.random() * 3}s`
+  }));
+}
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -133,15 +144,15 @@ export default function HeroSection() {
     >
       {/* Enhanced Data Dust Particles - Decorative, hidden from screen readers */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        {[...Array(25)].map((_, i) => (
+        {useMemo(() => generateParticles(25), []).map((particle) => (
           <div 
-            key={i} 
+            key={particle.key}
             className="dust-particle absolute w-0.5 h-0.5 bg-white/30 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              bottom: `${Math.random() * 100}%`,
-              animationDuration: `${4 + Math.random() * 5}s`,
-              animationDelay: `${Math.random() * 3}s`
+              left: particle.left,
+              bottom: particle.bottom,
+              animationDuration: particle.animationDuration,
+              animationDelay: particle.animationDelay
             }}
           />
         ))}

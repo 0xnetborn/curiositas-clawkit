@@ -1,8 +1,17 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import { animate } from 'animejs';
+
+// Generate random particle positions once
+function generateVoidParticles(count: number) {
+  return [...Array(count)].map((_, i) => ({
+    key: i,
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`
+  }));
+}
 
 export default function NotFound() {
   const agentRef = useRef<HTMLDivElement>(null);
@@ -61,13 +70,13 @@ export default function NotFound() {
 
       {/* Floating Particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {useMemo(() => generateVoidParticles(20), []).map((particle) => (
           <div
-            key={i}
+            key={particle.key}
             className="notfound-particle absolute w-1 h-1 bg-teal-500/30 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: particle.left,
+              top: particle.top,
             }}
           />
         ))}

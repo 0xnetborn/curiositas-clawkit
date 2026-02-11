@@ -1,7 +1,15 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { animate, stagger, createTimeline } from 'animejs';
+
+// Generate random chart heights once
+function generateChartData(count: number) {
+  return [...Array(count)].map((_, i) => ({
+    key: i,
+    height: `${Math.random() * 80 + 20}%`
+  }));
+}
 
 const nodes = [
   { id: 'SCAN', label: 'MARKET SCAN', status: 'ACTIVE', metrics: '42 sources', x: 10, y: 40 },
@@ -159,11 +167,11 @@ export default function PipelinePage() {
       {/* Analytics Chart (Compact) */}
       <div className="h-32 bg-black/20 border border-white/5 rounded-xl p-4 relative">
         <div ref={chartRef} className="flex items-end justify-between h-full gap-1">
-          {Array.from({ length: 40 }).map((_, i) => (
+          {useMemo(() => generateChartData(40), []).map((data) => (
             <div 
-              key={i} 
+              key={data.key} 
               className="w-full bg-teal-500/20 hover:bg-teal-500/60 transition-colors rounded-sm"
-              style={{ height: `${Math.random() * 80 + 20}%` }}
+              style={{ height: data.height }}
             />
           ))}
         </div>

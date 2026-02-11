@@ -30,7 +30,7 @@ export default function TestimonialsSection() {
         <div className="grid md:grid-cols-3 gap-12" ref={containerRef} role="list" aria-label="Customer testimonials">
           {quotes.map((q, i) => (
             <div key={i} className="group cursor-default" role="listitem">
-              <div className="text-4xl text-white/10 mb-4 font-serif" aria-hidden="true">"</div>
+              <div className="text-4xl text-white/10 mb-4 font-serif" aria-hidden="true">&quot;</div>
               <p className="text-lg text-white/80 font-light leading-relaxed mb-6 group-hover:text-white transition-colors">
                 {q.text}
               </p>

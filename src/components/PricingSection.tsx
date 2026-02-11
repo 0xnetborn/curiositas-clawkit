@@ -41,7 +41,7 @@ export default function PricingSection() {
   return (
     <section id="pricing" className="py-32 px-6 bg-black border-t border-white/5">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-sm font-mono text-white/40 tracking-widest uppercase mb-16">/// ACCESS PLANS</h2>
+        <h2 className="text-sm font-mono text-white/40 tracking-widest uppercase mb-16"><span aria-hidden="true" className="text-white/20">&#47;&#47;</span> ACCESS PLANS</h2>
 
         <div ref={tableRef} className="grid md:grid-cols-3 border border-white/10 divide-y md:divide-y-0 md:divide-x divide-white/10 bg-white/[0.02]">
           {plans.map((plan, i) => (

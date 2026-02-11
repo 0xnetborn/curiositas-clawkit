@@ -118,7 +118,7 @@ export default function FeaturesSection() {
           ref={headerRef}
           className="text-sm font-mono text-white/40 mb-12 tracking-widest uppercase opacity-0"
         >
-          /// Core Capabilities
+          <span aria-hidden="true" className="text-white/20">&#47;&#47;</span> Core Capabilities
         </h2>
 
         <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

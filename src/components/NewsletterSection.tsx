@@ -68,7 +68,7 @@ export default function NewsletterSection() {
             aria-label="Subscription successful"
           >
             <div className="text-4xl mb-3" aria-hidden="true">✨</div>
-            <p className="text-teal-400 font-medium">You're on the list!</p>
+            <p className="text-teal-400 font-medium">You&apos;re on the list!</p>
             <p className="text-white/40 text-sm mt-2">Check your inbox for a confirmation.</p>
             <button 
               onClick={() => setStatus('idle')}

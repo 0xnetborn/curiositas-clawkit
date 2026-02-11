@@ -1,4 +1,5 @@
 'use client';
+/* eslint-disable react-hooks/set-state-in-effect */
 
 import { useEffect, useRef, useState } from 'react';
 import { animate } from 'animejs';
@@ -11,6 +12,7 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  // Intentionally setting mounted state in effect for hydration mismatch prevention
   useEffect(() => {
     setMounted(true);
   }, []);
