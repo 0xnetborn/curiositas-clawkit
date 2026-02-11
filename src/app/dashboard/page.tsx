@@ -11,6 +11,7 @@ import QuickActionsWidget from '@/components/QuickActionsWidget';
 import { useToast } from '@/components/ui/Toast';
 import { useKeyboardShortcuts } from '@/components/hooks/useKeyboardShortcuts';
 import KeyboardShortcutsHelp from '@/components/KeyboardShortcutsHelp';
+import SystemStatsWidget from '@/components/SystemStatsWidget';
 
 const metrics = [
   { label: 'TASKS COMPLETED', value: '842', delta: '+12%', trend: 'up' },
@@ -126,6 +127,9 @@ export default function DashboardPage() {
 
         {/* Animated Charts Widget */}
         <ChartsWidget />
+
+        {/* System Stats Widget */}
+        <SystemStatsWidget />
 
         {/* Metrics Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
