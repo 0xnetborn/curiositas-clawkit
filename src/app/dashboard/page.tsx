@@ -6,6 +6,7 @@ import SpotlightCard from '@/components/ui/SpotlightCard';
 import { usePageTracking } from '@/components/AnalyticsContext';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 import ChartsWidget from '@/components/ChartsWidget';
+import LiveFeedWidget from '@/components/LiveFeedWidget';
 
 const metrics = [
   { label: 'TASKS COMPLETED', value: '842', delta: '+12%', trend: 'up' },
@@ -20,16 +21,8 @@ const squadStatus = [
   { name: 'HERMES', status: 'working', task: 'Scheduling Campaign' },
 ];
 
-const logs = [
-  { time: '10:42:01', agent: 'ATHENA', msg: 'Market analysis complete. 3 trends identified.' },
-  { time: '10:42:05', agent: 'CALLIOPE', msg: 'Draft generated: "Future of AI Ops".' },
-  { time: '10:42:12', agent: 'THEMIS', msg: 'Quality check passed (Score: 98/100).' },
-  { time: '10:43:00', agent: 'SYSTEM', msg: 'Hourly backup initiated.' },
-];
-
 export default function DashboardPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const feedRef = useRef<HTMLDivElement>(null);
   const [showAnalytics, setShowAnalytics] = useState(false);
 
   // Track page view
@@ -46,18 +39,6 @@ export default function DashboardPage() {
       ease: 'outExpo',
       duration: 800,
     });
-
-    // Simulate Live Feed
-    if (feedRef.current) {
-      const feedItems = feedRef.current.children;
-      animate(feedItems, {
-        opacity: [0, 1],
-        translateX: [-10, 0],
-        delay: stagger(200, { start: 500 }),
-        ease: 'outQuad',
-        duration: 500,
-      });
-    }
   }, []);
 
   return (
@@ -101,34 +82,7 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main: Live Feed */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="flex items-center justify-between">
-            <h3 className="text-sm font-mono text-white/60 uppercase tracking-wider">/// Live Operations Terminal</h3>
-            <span className="w-2 h-2 bg-teal-500 rounded-full animate-pulse" />
-          </div>
-          
-          <div className="bg-black/50 border border-white/10 p-6 h-96 overflow-hidden relative font-mono text-xs">
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            
-            <div ref={feedRef} className="space-y-3">
-              {logs.map((log, i) => (
-                <div key={i} className="flex gap-4 opacity-0 border-b border-white/5 pb-2 last:border-0">
-                  <span className="text-white/30">{log.time}</span>
-                  <span className={`w-20 ${
-                    log.agent === 'SYSTEM' ? 'text-amber-500' : 'text-teal-500'
-                  }`}>{log.agent}</span>
-                  <span className="text-white/80">{log.msg}</span>
-                </div>
-              ))}
-              {/* Fake typing cursor */}
-              <div className="flex gap-4 pt-2">
-                <span className="text-white/30">10:43:05</span>
-                <span className="w-20 text-teal-500">HERA</span>
-                <span className="text-white/80 flex items-center gap-1">
-                  Updating weekly schedule<span className="w-1.5 h-3 bg-white animate-pulse block" />
-                </span>
-              </div>
-            </div>
-          </div>
+          <LiveFeedWidget />
         </div>
 
         {/* Sidebar: Active Squad */}
