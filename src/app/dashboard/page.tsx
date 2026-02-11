@@ -7,6 +7,7 @@ import { usePageTracking } from '@/components/AnalyticsContext';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 import ChartsWidget from '@/components/ChartsWidget';
 import LiveFeedWidget from '@/components/LiveFeedWidget';
+import { useToast } from '@/components/ui/Toast';
 
 const metrics = [
   { label: 'TASKS COMPLETED', value: '842', delta: '+12%', trend: 'up' },
@@ -24,9 +25,26 @@ const squadStatus = [
 export default function DashboardPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showAnalytics, setShowAnalytics] = useState(false);
+  const { toast } = useToast();
 
   // Track page view
   usePageTracking('/dashboard', 'Dashboard | CurioKit');
+
+  const handleDeploy = () => {
+    toast({
+      title: 'Deployment Initiated',
+      description: 'Deploying new agent to the squad...',
+      type: 'info'
+    });
+    // Simulate deployment delay
+    setTimeout(() => {
+      toast({
+        title: 'Agent Deployed',
+        description: 'New agent is now active and ready.',
+        type: 'success'
+      });
+    }, 2500);
+  };
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -111,7 +129,10 @@ export default function DashboardPage() {
           </div>
 
           <div className="p-4 border border-dashed border-white/10 text-center">
-            <button className="text-xs text-white/40 hover:text-white transition-colors uppercase tracking-widest">
+            <button 
+              onClick={handleDeploy}
+              className="text-xs text-white/40 hover:text-white hover:border-teal-500/50 transition-all uppercase tracking-widest border border-transparent hover:border-teal-500/30 px-4 py-2 rounded"
+            >
               + Deploy New Agent
             </button>
           </div>
