@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { AnalyticsProvider } from "@/components/AnalyticsContext";
 import { ToastProvider } from "@/components/ui/Toast";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
+import CookieConsentBanner from "@/components/CookieConsentBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -140,6 +141,7 @@ export default function RootLayout({
               <Footer />
               <KonamiEasterEgg />
               <ScrollToTop />
+              <CookieConsentBanner />
             </PageWrapper>
           </ThemeProvider>
           </ToastProvider>

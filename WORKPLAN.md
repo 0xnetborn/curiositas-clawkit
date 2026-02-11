@@ -226,4 +226,7 @@
 
 ---
 
-*Timestamp: February 11, 2026, 4:28 PM (Europe/Rome)*
+*Timestamp: February 11, 2026, 6:33 PM (Europe/Rome)*
+- [x] Add GDPR-compliant Cookie Consent Banner with smooth animations, localStorage persistence, and customizable preferences (Accept All/Decline/Settings)
+
+---
