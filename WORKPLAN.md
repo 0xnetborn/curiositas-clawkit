@@ -271,3 +271,10 @@
 
 *Timestamp: February 12, 2026, 6:12 PM (Europe/Rome)*
 - [x] **Enhancement:** Improved WidgetSkeleton with type-specific designs (stats, chart, feed, default) for better lazy loading UX
+
+---
+
+*Timestamp: February 12, 2026, 8:15 PM (Europe/Rome)*
+*Status: TASK COMPLETED - Removed duplicate TrustedBySection from page.tsx to clean up code and avoid double-rendering. Footer now correctly handles the section.*
+
+

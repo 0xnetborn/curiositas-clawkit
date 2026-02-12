@@ -33,7 +33,7 @@ export default function Home() {
       <NewsletterSection />
       <PricingSection />
       <DocsSection />
-      <TrustedBySection />
+      {/* TrustedBySection is now included in Footer.tsx */}
 
       {/* Final CTA - Tech Style */}
       <section className="py-32 px-6 border-t border-white/5 bg-grid relative overflow-hidden" aria-labelledby="final-cta-heading">
