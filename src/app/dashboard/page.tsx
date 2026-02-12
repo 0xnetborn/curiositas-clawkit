@@ -122,23 +122,23 @@ export default function DashboardPage() {
         </div>
 
         {showAnalytics && (
-          <LazyWidget fallback={<WidgetSkeleton height="h-96" />}>
+          <LazyWidget fallback={<WidgetSkeleton type="chart" height="h-96" />}>
             <LazyAnalyticsDashboard compact={false} />
           </LazyWidget>
         )}
 
         {/* Quick Actions Widget - Lazy Loaded */}
-        <LazyWidget fallback={<WidgetSkeleton height="h-24" />}>
+        <LazyWidget fallback={<WidgetSkeleton type="default" height="h-24" />}>
           <LazyQuickActionsWidget />
         </LazyWidget>
 
         {/* Charts Widget - Lazy Loaded */}
-        <LazyWidget fallback={<WidgetSkeleton height="h-64" />}>
+        <LazyWidget fallback={<WidgetSkeleton type="chart" height="h-64" />}>
           <LazyChartsWidget />
         </LazyWidget>
 
         {/* System Stats Widget - Lazy Loaded */}
-        <LazyWidget fallback={<WidgetSkeleton height="h-32" />}>
+        <LazyWidget fallback={<WidgetSkeleton type="stats" height="h-32" />}>
           <LazySystemStatsWidget />
         </LazyWidget>
 
@@ -164,7 +164,7 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main: Live Feed - Lazy Loaded */}
           <div className="lg:col-span-2 space-y-6">
-            <LazyWidget fallback={<WidgetSkeleton height="h-80" />}>
+            <LazyWidget fallback={<WidgetSkeleton type="feed" height="h-80" />}>
               <LazyLiveFeedWidget />
             </LazyWidget>
           </div>
