@@ -14,6 +14,7 @@ import VideoDemoSection from '@/components/VideoDemoSection';
 import DocsSection from '@/components/DocsSection';
 import KonamiEasterEgg from '@/components/KonamiEasterEgg';
 import PageTracker from '@/components/PageTracker';
+import QuickStartSection from '@/components/QuickStartSection';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <KonamiEasterEgg />
       <Navbar />
       <HeroSection />
+      <QuickStartSection />
       <FeaturesSection />
       <SquadSection />
       <WorkflowSection />
