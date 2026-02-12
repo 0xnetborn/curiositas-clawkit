@@ -245,3 +245,6 @@
 - [x] **Fix:** Ensure CookieConsentBanner is visible on Dashboard (added to dashboard/layout.tsx)
 
 ---
+
+*Timestamp: February 12, 2026, 2:45 AM (Europe/Rome)*
+- [x] Add Video Demo Section to landing page (embedded video showcase with animated play button and device frame mockup)

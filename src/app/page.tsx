@@ -10,6 +10,7 @@ import FAQSection from '@/components/FAQSection';
 import NewsletterSection from '@/components/NewsletterSection';
 import LoadingScreen from '@/components/LoadingScreen';
 import TrustedBySection from '@/components/TrustedBySection';
+import VideoDemoSection from '@/components/VideoDemoSection';
 import DocsSection from '@/components/DocsSection';
 import KonamiEasterEgg from '@/components/KonamiEasterEgg';
 import PageTracker from '@/components/PageTracker';
@@ -27,6 +28,7 @@ export default function Home() {
       <SquadSection />
       <WorkflowSection />
       <TestimonialsSection />
+      <VideoDemoSection />
       <FAQSection />
       <NewsletterSection />
       <PricingSection />
