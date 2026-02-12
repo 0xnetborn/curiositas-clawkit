@@ -24,7 +24,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://curiokit.com'),
   title: "CurioKit | AI Orchestration for Founders",
-  description: "High-performance AI agent squads for marketing and operations. Deploy instantly.",
+  description: "High-performance AI agent squads for marketing and operations. Deploy instantly. AI agents, automation, productivity, startup tools.",
+  keywords: ["AI agents", "automation", "productivity", "startup tools", "marketing automation", "AI orchestration"],
   icons: {
     icon: '/logo.webp',
   },
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     siteName: 'CurioKit',
     images: [
       {
-        url: '/og',
+        url: 'https://curiokit.com/og',
         width: 1200,
         height: 630,
       },
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     site: "@curiositas",
     title: "CurioKit | AI Orchestration for Founders",
     description: "Deploy your AI squad in seconds. No configuration required.",
-    images: ['/og'],
+    images: ['https://curiokit.com/og'],
   },
   alternates: {
     canonical: 'https://curiokit.com',
