@@ -314,3 +314,14 @@
 
 *Timestamp: February 13, 2026, 6:46 PM (Europe/Rome)*
 - [x] **Verification:** Build verified successful. All tasks completed. Autopilot standing by for new directives.
+
+---
+
+*Timestamp: February 13, 2026, 7:47 PM (Europe/Rome)*
+- [x] **Lint Cleanup:** Fixed 8 lint warnings across project:
+  - Removed unused imports (TrustedBySection, useCallback, lazy, useState)
+  - Fixed unused containerRef in FeaturesSection.tsx
+  - Fixed unused `i` variable in forEach loop
+  - Replaced tracked Set with useRef to fix exhaustive-deps warning
+  - Auto-removed unused eslint-disable directives
+- [x] **Build Verified:** All 0 errors, 10 warnings remaining (acceptable)

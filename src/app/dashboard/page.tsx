@@ -1,12 +1,14 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { animate, stagger } from 'animejs';
 import SpotlightCard from '@/components/ui/SpotlightCard';
 import { usePageTracking } from '@/components/AnalyticsContext';
 import { useToast } from '@/components/ui/Toast';
 import { useKeyboardShortcuts } from '@/components/hooks/useKeyboardShortcuts';
 import KeyboardShortcutsHelp from '@/components/KeyboardShortcutsHelp';
+import CommandPalette from '@/components/ui/CommandPalette';
 import LazyWidget, { 
   LazyChartsWidget, 
   LazySystemStatsWidget, 
@@ -30,6 +32,7 @@ const squadStatus = [
 ];
 
 export default function DashboardPage() {
+  const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const [showAnalytics, setShowAnalytics] = useState(false);
   const { toast } = useToast();
@@ -94,6 +97,24 @@ export default function DashboardPage() {
       description: 'Close modal'
     }
   ]);
+
+  // Command palette items
+  const commandItems = [
+    // Navigation
+    { id: 'nav-home', label: 'Go to Home', category: 'Navigation', action: () => router.push('/'), icon: '🏠' },
+    { id: 'nav-dashboard', label: 'Go to Dashboard', category: 'Navigation', action: () => router.push('/dashboard'), icon: '📊' },
+    { id: 'nav-squad', label: 'Manage Squad', category: 'Navigation', action: () => router.push('/dashboard/squad'), icon: '🤖' },
+    { id: 'nav-pipeline', label: 'Pipeline View', category: 'Navigation', action: () => router.push('/dashboard/pipeline'), icon: '🔄' },
+    { id: 'nav-archive', label: 'Archive', category: 'Navigation', action: () => router.push('/dashboard/archive'), icon: '📦' },
+    // Actions
+    { id: 'action-new-squad', label: 'Create New Squad', category: 'Actions', action: () => toast({ title: 'New Squad', description: 'Opening squad creator...', type: 'info' }), icon: '➕' },
+    { id: 'action-deploy', label: 'Deploy Agent', category: 'Actions', action: handleDeploy, icon: '🚀' },
+    { id: 'action-export', label: 'Export Data', category: 'Actions', action: () => toast({ title: 'Export', description: 'Preparing export...', type: 'info' }), icon: '📤' },
+    // Settings
+    { id: 'settings-theme', label: 'Toggle Theme', category: 'Settings', action: () => document.dispatchEvent(new CustomEvent('toggle-theme')), icon: '🎨' },
+    { id: 'settings-help', label: 'Show Shortcuts', category: 'Settings', action: () => setHelpVisible(true), icon: '⌨️' },
+    { id: 'settings-analytics', label: 'Toggle Analytics', category: 'Settings', action: () => setShowAnalytics(prev => !prev), icon: '📈' },
+  ];
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -207,6 +228,7 @@ export default function DashboardPage() {
       </div>
 
       <KeyboardShortcutsHelp isOpen={helpVisible} onClose={() => setHelpVisible(false)} />
+      <CommandPalette items={commandItems} />
     </>
   );
 }
