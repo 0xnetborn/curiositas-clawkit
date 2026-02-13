@@ -289,12 +289,7 @@
 
 ---
 
-*Timestamp: February 13, 2026, 7:27 AM (Europe/Rome)*
-*Status: VERIFIED - Build successful. All tasks completed. Awaiting new directives.*
-- Feature requests from Tommaso
-- Bug fixes if any discovered
-- Performance optimizations
-- New landing page sections
-- Dashboard enhancements
+*Timestamp: February 13, 2026, 11:31 AM (Europe/Rome)*
+- [x] **Optimize next.config.ts for image performance:** Added remotePatterns for curiokit.com and vercel.app to enable Next.js Image optimization.
 
 

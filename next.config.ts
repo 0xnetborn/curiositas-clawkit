@@ -1,7 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'curiokit.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'curiositas-clawkit-demo.vercel.app',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
