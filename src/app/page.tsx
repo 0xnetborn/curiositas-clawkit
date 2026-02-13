@@ -14,6 +14,7 @@ import DocsSection from '@/components/DocsSection';
 import KonamiEasterEgg from '@/components/KonamiEasterEgg';
 import PageTracker from '@/components/PageTracker';
 import QuickStartSection from '@/components/QuickStartSection';
+import ContactSection from '@/components/ContactSection';
 
 export default function Home() {
   return (
@@ -34,7 +35,7 @@ export default function Home() {
       <NewsletterSection />
       <PricingSection />
       <DocsSection />
-      {/* TrustedBySection is now included in Footer.tsx */}
+      <ContactSection />
 
       {/* Final CTA - Tech Style */}
       <section className="py-32 px-6 border-t border-white/5 bg-grid relative overflow-hidden" aria-labelledby="final-cta-heading">
