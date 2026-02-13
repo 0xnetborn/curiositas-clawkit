@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAnalytics } from '@/components/AnalyticsContext';
 
 // Re-export analytics functions for convenience
@@ -60,8 +60,7 @@ interface ScrollTrackingOptions {
 export function useScrollTracking(options: ScrollTrackingOptions = {}) {
   const { trackEvent } = useAnalytics();
   const { threshold = 75, onlyOnce = true } = options;
-
-  const tracked = typeof window !== 'undefined' ? new Set<number>() : null;
+  const trackedRef = useRef<Set<number> | null>(typeof window !== 'undefined' ? new Set<number>() : null);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -72,8 +71,8 @@ export function useScrollTracking(options: ScrollTrackingOptions = {}) {
       const scrollPercent = Math.round((scrollTop / docHeight) * 100);
 
       if (scrollPercent >= threshold) {
-        if (tracked && !tracked.has(threshold)) {
-          if (onlyOnce) tracked.add(threshold);
+        if (trackedRef.current && !trackedRef.current.has(threshold)) {
+          if (onlyOnce) trackedRef.current.add(threshold);
           trackEvent('scroll_depth', { depth: threshold, percent: true });
         }
       }
@@ -81,7 +80,7 @@ export function useScrollTracking(options: ScrollTrackingOptions = {}) {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [threshold, onlyOnce, trackEvent, tracked]);
+  }, [threshold, onlyOnce, trackEvent]);
 }
 
 interface VisibilityTrackingOptions {

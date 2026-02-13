@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { animate, stagger, createTimeline } from 'animejs';
 
 // Generate random chart heights once

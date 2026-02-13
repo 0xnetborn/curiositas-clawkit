@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, useCallback, lazy } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { animate, stagger } from 'animejs';
 import SpotlightCard from '@/components/ui/SpotlightCard';
 import { usePageTracking } from '@/components/AnalyticsContext';

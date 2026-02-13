@@ -157,7 +157,7 @@ function AnalyticsDemo() {
 
   useEffect(() => {
     const animateBars = () => {
-      barsRef.current.forEach((bar, i) => {
+      barsRef.current.forEach((bar) => {
         if (bar) {
           const height = 20 + Math.random() * 60;
           animate(bar, {
@@ -192,7 +192,6 @@ function AnalyticsDemo() {
 // Demo Component: Scalability
 function ScalabilityDemo() {
   const [nodes, setNodes] = useState([1, 2, 3]);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {

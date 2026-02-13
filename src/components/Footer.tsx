@@ -12,7 +12,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   // Intentionally setting mounted state in effect for hydration mismatch prevention
-  // eslint-disable-next-line react-hooks/set-state-in-effect
+   
   useEffect(() => {
     setMounted(true);
   }, []);
