@@ -324,3 +324,13 @@
 
 *Timestamp: February 13, 2026, 8:49 PM (Europe/Rome)*
 - [x] **Command Palette:** Added Cmd+K quick launcher with search, keyboard navigation (↑↓), and actions for Navigation (Home, Dashboard, Squad, Pipeline, Archive), Actions (New Squad, Deploy, Export), and Settings (Theme, Shortcuts, Analytics)
+
+---
+
+*Timestamp: February 13, 2026, 10:55 PM (Europe/Rome)*
+- [x] **Lint Fixes:** Fixed 5 linting errors in CommandPalette.tsx:
+  - Removed unused `useRouter` import and router variable
+  - Fixed setState in useEffect (refactored to use handleQueryChange callback)
+  - Fixed unescaped quotes (changed to HTML entities)
+  - Removed unused `index` variable in map callback
+- [x] **Build Verified:** All lint errors resolved (0 errors, 0 warnings), build successful

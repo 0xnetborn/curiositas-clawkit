@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { animate, stagger } from 'animejs';
-import { useRouter } from 'next/navigation';
 
 interface CommandItem {
   id: string;
@@ -24,7 +23,6 @@ export default function CommandPalette({ items, placeholder = 'Type a command or
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   // Group items by category
   const groupedItems = items.reduce((acc, item) => {
@@ -43,10 +41,11 @@ export default function CommandPalette({ items, placeholder = 'Type a command or
       )
     : items;
 
-  // Reset selection when query changes
-  useEffect(() => {
+  // Reset selection when query changes - handled in setQuery
+  const handleQueryChange = useCallback((value: string) => {
+    setQuery(value);
     setSelectedIndex(0);
-  }, [query]);
+  }, []);
 
   // Open/close animation
   useEffect(() => {
@@ -144,7 +143,7 @@ export default function CommandPalette({ items, placeholder = 'Type a command or
             ref={inputRef}
             type="text"
             value={query}
-            onChange={e => setQuery(e.target.value)}
+            onChange={e => handleQueryChange(e.target.value)}
             onKeyDown={handleKeyNavigation}
             placeholder={placeholder}
             className="flex-1 bg-transparent text-white placeholder-gray-400 outline-none text-lg"
@@ -164,7 +163,7 @@ export default function CommandPalette({ items, placeholder = 'Type a command or
         >
           {filteredItems.length === 0 ? (
             <div className="px-4 py-8 text-center text-gray-400">
-              No results found for "{query}"
+              No results found for &quot;{query}&quot;
             </div>
           ) : query ? (
             // Show flat list when searching
@@ -204,7 +203,7 @@ export default function CommandPalette({ items, placeholder = 'Type a command or
                 <div className="px-4 py-2 text-xs font-semibold text-teal-400 uppercase tracking-wider">
                   {category}
                 </div>
-                {categoryItems.map((item, index) => {
+                {categoryItems.map((item) => {
                   const globalIndex = filteredItems.indexOf(item);
                   return (
                     <button
