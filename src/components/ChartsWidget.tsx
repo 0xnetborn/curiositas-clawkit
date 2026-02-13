@@ -110,7 +110,7 @@ function AnimatedLineChart() {
 
   return (
     <div className="bg-white/5 border border-white/10 p-4">
-      <h4 className="text-xs font-mono text-white/60 uppercase tracking-wider mb-4">/// Activity Trend</h4>
+      <h4 className="text-xs font-mono text-white/60 uppercase tracking-wider mb-4">Activity Trend</h4>
       <canvas 
         ref={canvasRef} 
         width={300} 
@@ -157,7 +157,7 @@ export default function ChartsWidget() {
       </div>
       
       <div className="md:col-span-2">
-        <AnimatedBarChart data={barData} title="/// Weekly Performance" />
+        <AnimatedBarChart data={barData} title="Weekly Performance" />
       </div>
     </div>
   );

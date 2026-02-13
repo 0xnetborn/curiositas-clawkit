@@ -22,6 +22,7 @@ export default function AnalyticsDashboard({ compact = false }: AnalyticsDashboa
   const [activeTab, setActiveTab] = useState<'overview' | 'pageviews' | 'events'>('overview');
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

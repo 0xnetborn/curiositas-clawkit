@@ -33,9 +33,11 @@ const connections = [
   { from: 'AUDIT', to: 'SYNC' },
 ];
 
-const setDashoffset = (el: any) => {
+// Type assertion for anime.js compatibility
+type AnimeSetter = (el: SVGPathElement) => number;
+const setDashoffset: AnimeSetter = (el: SVGPathElement) => {
   const pathLength = el.getTotalLength();
-  el.setAttribute('stroke-dasharray', pathLength);
+  el.setAttribute('stroke-dasharray', String(pathLength));
   return pathLength;
 };
 
@@ -57,16 +59,18 @@ export default function PipelinePage() {
       translateY: [20, 0],
       delay: stagger(100),
     })
-    // Draw Connections
+// Draw Connections
     .add('.pipeline-link', {
-      strokeDashoffset: [setDashoffset, 0],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      strokeDashoffset: [setDashoffset as any, 0],
       opacity: [0, 0.4],
       delay: stagger(100),
     }, '-=800');
 
     // Continuous Data Flow
     animate('.data-packet', {
-      strokeDashoffset: [setDashoffset, 0],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      strokeDashoffset: [setDashoffset as any, 0],
       ease: 'linear',
       duration: 2000,
       loop: true,

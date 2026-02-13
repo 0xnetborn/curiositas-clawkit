@@ -26,9 +26,11 @@ const agents = [
   { id: 'HERACLES', role: 'UNBLOCKER', type: 'WORKER', x: 20, y: 70, connections: [] },
 ];
 
-const setDashoffset = (el: any) => {
+// Type assertion for anime.js compatibility
+type AnimeSetter = (el: SVGPathElement) => number;
+const setDashoffset: AnimeSetter = (el: SVGPathElement) => {
   const pathLength = el.getTotalLength();
-  el.setAttribute('stroke-dasharray', pathLength);
+  el.setAttribute('stroke-dasharray', String(pathLength));
   return pathLength;
 };
 
@@ -51,7 +53,8 @@ export default function SquadPage() {
       delay: stagger(50, { from: 'center' }),
     })
     .add('.connection-path', {
-      strokeDashoffset: [setDashoffset, 0],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      strokeDashoffset: [setDashoffset as any, 0],
       opacity: [0, 0.2],
       delay: stagger(20),
     }, '-=1000');

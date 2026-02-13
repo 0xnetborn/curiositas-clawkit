@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from 'react';
 import { usePageTracking } from '@/components/AnalyticsContext';
 
 interface PageTrackerProps {

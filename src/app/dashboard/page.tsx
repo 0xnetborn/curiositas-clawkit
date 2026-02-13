@@ -171,7 +171,7 @@ export default function DashboardPage() {
 
           {/* Sidebar: Active Squad */}
           <div className="space-y-6">
-            <h3 className="text-sm font-mono text-white/60 uppercase tracking-wider">/// Squad Status</h3>
+            <h3 className="text-sm font-mono text-white/60 uppercase tracking-wider">Squad Status</h3>
             
             <div className="space-y-4">
               {squadStatus.map((agent, i) => (

@@ -40,7 +40,7 @@ export default function QuickActionsWidget() {
     <div className="p-5 bg-white/5 border border-white/5">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xs font-mono text-white/60 uppercase tracking-wider">
-          /// Quick Actions
+          Quick Actions
         </h3>
         <span className="text-[10px] text-white/30 font-mono">Press key</span>
       </div>

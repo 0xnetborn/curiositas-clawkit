@@ -23,6 +23,9 @@ export default function LazyWidget({
 }
 
 export function WidgetSkeleton({ height = 'h-32', type = 'default' }: { height?: string; type?: 'default' | 'stats' | 'chart' | 'feed' }) {
+  // Fixed bar heights for chart skeleton - no random needed
+  const barHeights = [45, 70, 35, 85, 55, 90, 40];
+
   if (type === 'stats') {
     return (
       <div className={`${height} bg-white/5 border border-white/10 rounded-lg overflow-hidden animate-pulse`}>
@@ -59,8 +62,8 @@ export function WidgetSkeleton({ height = 'h-32', type = 'default' }: { height?:
         <div className="p-4 space-y-4">
           {/* Chart bars */}
           <div className="flex items-end justify-between h-32 gap-2">
-            {[1, 2, 3, 4, 5, 6, 7].map((i) => (
-              <div key={i} className="flex-1 bg-white/5 rounded-t" style={{ height: `${20 + Math.random() * 60}%` }} />
+            {barHeights.map((h, i) => (
+              <div key={i} className="flex-1 bg-white/5 rounded-t" style={{ height: `${h}%` }} />
             ))}
           </div>
           {/* Labels */}

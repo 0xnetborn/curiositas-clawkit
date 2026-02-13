@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { animate, stagger } from 'animejs';
+import { stagger } from 'animejs';
 import { Timeline } from 'animejs';
 
 export default function QuickStartSection() {

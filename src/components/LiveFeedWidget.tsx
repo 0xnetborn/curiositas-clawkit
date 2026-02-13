@@ -95,7 +95,7 @@ export default function LiveFeedWidget() {
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-mono text-white/60 uppercase tracking-wider">/// Live Operations Terminal</h3>
+        <h3 className="text-sm font-mono text-white/60 uppercase tracking-wider">Live Operations Terminal</h3>
         <div className="flex items-center gap-2">
           <span className="text-[10px] text-white/30">{logs.length} events</span>
           <span className="w-2 h-2 bg-teal-500 rounded-full animate-pulse" />

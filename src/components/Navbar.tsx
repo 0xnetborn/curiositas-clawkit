@@ -56,7 +56,7 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8 text-xs font-medium tracking-wide" role="menubar" aria-label="Primary navigation">
-          {['FEATURES', 'WORKFLOW', 'PRICING'].map((link, index) => (
+          {['FEATURES', 'WORKFLOW', 'PRICING'].map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
