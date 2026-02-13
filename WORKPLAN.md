@@ -284,6 +284,11 @@
 
 ---
 
+*Timestamp: February 13, 2026, 10:29 AM (Europe/Rome)*
+*Status: TASK COMPLETED - Removed duplicate `components/dashboard` folder at project root (contained stale duplicate files). Actual components reside in `src/components/`.*
+
+---
+
 *Timestamp: February 13, 2026, 7:27 AM (Europe/Rome)*
 *Status: VERIFIED - Build successful. All tasks completed. Awaiting new directives.*
 - Feature requests from Tommaso
