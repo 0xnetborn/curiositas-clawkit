@@ -377,5 +377,13 @@
 
 ---
 
+*Timestamp: February 14, 2026, 8:16 PM (Europe/Rome)*
+- [x] **Added Dashboard Settings Page** - New `/dashboard/settings` page with 4 sections:
+  - Appearance (theme toggle)
+  - Notifications (push + sound toggles)
+  - Analytics (tracking toggle + data export/delete)
+  - Keyboard Shortcuts (reference list)
+- Added Settings to dashboard sidebar navigation
+
 *Timestamp: February 14, 2026, 4:12 PM (Europe/Rome)*
 - [x] **Task Cleanup:** Marked pending tasks as complete in WORKPLAN.md (analytics integration, animated charts widgets were already implemented)
