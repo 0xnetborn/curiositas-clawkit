@@ -349,3 +349,13 @@
 
 *Timestamp: February 14, 2026, 10:04 AM (Europe/Rome)*
 - [x] **Verification:** Build verified successful. All WORKPLAN tasks completed. Standing by for new tasks from Tommaso.
+
+---
+
+*Timestamp: February 14, 2026, 11:05 AM (Europe/Rome)*
+- [x] **Verification:** Build verified successful (✓ 10 routes generated). All WORKPLAN tasks completed. Autopilot standing by for new directives.
+
+---
+
+*Timestamp: February 14, 2026, 12:05 PM (Europe/Rome)*
+- [x] **Added NotificationCenter Widget** - New dashboard widget showing alerts (info/success/warning/error) with expand/collapse, unread count, "Mark all read" action, Anime.js animations, and lazy loading.

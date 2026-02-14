@@ -128,3 +128,4 @@ export const LazySystemStatsWidget = lazy(() => import('@/components/SystemStats
 export const LazyLiveFeedWidget = lazy(() => import('@/components/LiveFeedWidget').then(m => ({ default: m.default })));
 export const LazyAnalyticsDashboard = lazy(() => import('@/components/AnalyticsDashboard').then(m => ({ default: m.default })));
 export const LazyQuickActionsWidget = lazy(() => import('@/components/QuickActionsWidget').then(m => ({ default: m.default })));
+export const LazyNotificationCenter = lazy(() => import('@/components/NotificationCenter').then(m => ({ default: m.default })));

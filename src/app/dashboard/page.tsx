@@ -15,6 +15,7 @@ import LazyWidget, {
   LazyLiveFeedWidget, 
   LazyAnalyticsDashboard,
   LazyQuickActionsWidget,
+  LazyNotificationCenter,
   WidgetSkeleton
 } from '@/components/LazyWidget';
 
@@ -187,6 +188,11 @@ export default function DashboardPage() {
           <div className="lg:col-span-2 space-y-6">
             <LazyWidget fallback={<WidgetSkeleton type="feed" height="h-80" />}>
               <LazyLiveFeedWidget />
+            </LazyWidget>
+
+            {/* Notification Center - Lazy Loaded */}
+            <LazyWidget fallback={<WidgetSkeleton type="default" height="h-64" />}>
+              <LazyNotificationCenter />
             </LazyWidget>
           </div>
 
