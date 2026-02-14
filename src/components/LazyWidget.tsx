@@ -130,3 +130,4 @@ export const LazyAnalyticsDashboard = lazy(() => import('@/components/AnalyticsD
 export const LazyQuickActionsWidget = lazy(() => import('@/components/QuickActionsWidget').then(m => ({ default: m.default })));
 export const LazyNotificationCenter = lazy(() => import('@/components/NotificationCenter').then(m => ({ default: m.default })));
 export const LazySearchFilterWidget = lazy(() => import('@/components/SearchFilterWidget').then(m => ({ default: m.default })));
+export const LazyActivityTimelineWidget = lazy(() => import('@/components/ActivityTimelineWidget').then(m => ({ default: m.default })));

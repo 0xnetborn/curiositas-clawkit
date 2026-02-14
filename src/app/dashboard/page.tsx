@@ -17,6 +17,7 @@ import LazyWidget, {
   LazyQuickActionsWidget,
   LazyNotificationCenter,
   LazySearchFilterWidget,
+  LazyActivityTimelineWidget,
   WidgetSkeleton
 } from '@/components/LazyWidget';
 
@@ -217,6 +218,11 @@ export default function DashboardPage() {
                 };
                 navMap[id]?.();
               }} />
+            </LazyWidget>
+
+            {/* Activity Timeline Widget - Lazy Loaded */}
+            <LazyWidget fallback={<WidgetSkeleton type="feed" height="h-64" />}>
+              <LazyActivityTimelineWidget />
             </LazyWidget>
             
             <div className="space-y-4">
