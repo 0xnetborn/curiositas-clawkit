@@ -32,9 +32,13 @@ export default function ScrollToTop() {
     >
       <button
         onClick={scrollToTop}
-        className="w-12 h-12 rounded-full bg-teal-500/20 border border-teal-400/50 backdrop-blur-md flex items-center justify-center text-teal-300 hover:bg-teal-500/40 hover:border-teal-300 hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(45,212,191,0.3)] hover:shadow-[0_0_30px_rgba(45,212,191,0.5)]"
+        className="w-12 h-12 rounded-full bg-teal-500/20 border border-teal-400/50 backdrop-blur-md flex items-center justify-center text-teal-300 hover:bg-teal-500/40 hover:border-teal-300 hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(45,212,191,0.3)] hover:shadow-[0_0_30px_rgba(45,212,191,0.5)] group"
         aria-label="Scroll to top"
+        title="Back to top"
       >
+        <span className="absolute right-full mr-3 px-3 py-1 bg-gray-900/90 text-teal-300 text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none">
+          Back to top
+        </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
