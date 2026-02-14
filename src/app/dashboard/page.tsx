@@ -16,6 +16,7 @@ import LazyWidget, {
   LazyAnalyticsDashboard,
   LazyQuickActionsWidget,
   LazyNotificationCenter,
+  LazySearchFilterWidget,
   WidgetSkeleton
 } from '@/components/LazyWidget';
 
@@ -199,6 +200,24 @@ export default function DashboardPage() {
           {/* Sidebar: Active Squad */}
           <div className="space-y-6">
             <h3 className="text-sm font-mono text-white/60 uppercase tracking-wider">Squad Status</h3>
+            
+            {/* Search Filter Widget - Lazy Loaded */}
+            <LazyWidget fallback={<WidgetSkeleton type="default" height="h-48" />}>
+              <LazySearchFilterWidget onNavigate={(id) => {
+                const navMap: Record<string, () => void> = {
+                  'home': () => router.push('/'),
+                  'dashboard': () => router.push('/dashboard'),
+                  'squad': () => router.push('/dashboard/squad'),
+                  'pipeline': () => router.push('/dashboard/pipeline'),
+                  'archive': () => router.push('/dashboard/archive'),
+                  'new-squad': () => toast({ title: 'New Squad', description: 'Opening squad creator...', type: 'info' }),
+                  'deploy': handleDeploy,
+                  'export': () => toast({ title: 'Export', description: 'Preparing export...', type: 'info' }),
+                  'settings': () => setHelpVisible(true),
+                };
+                navMap[id]?.();
+              }} />
+            </LazyWidget>
             
             <div className="space-y-4">
               {squadStatus.map((agent, i) => (

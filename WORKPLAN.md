@@ -359,3 +359,8 @@
 
 *Timestamp: February 14, 2026, 12:05 PM (Europe/Rome)*
 - [x] **Added NotificationCenter Widget** - New dashboard widget showing alerts (info/success/warning/error) with expand/collapse, unread count, "Mark all read" action, Anime.js animations, and lazy loading.
+
+---
+
+*Timestamp: February 14, 2026, 1:08 PM (Europe/Rome)*
+- [x] **Added SearchFilterWidget** - New dashboard search/filter component with keyboard navigation (↑↓ + Enter), search across navigation and actions, category filtering (navigation/action), Anime.js entrance animation, and lazy loading.
