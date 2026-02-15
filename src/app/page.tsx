@@ -1,5 +1,6 @@
 import WebGLBackground from '@/components/WebGLBackground';
 import Navbar from '@/components/Navbar';
+import FloatingNav from '@/components/FloatingNav';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import SquadSection from '@/components/SquadSection';
@@ -24,6 +25,7 @@ export default function Home() {
       <LoadingScreen />
       <KonamiEasterEgg />
       <Navbar />
+      <FloatingNav />
       <HeroSection />
       <QuickStartSection />
       <FeaturesSection />
