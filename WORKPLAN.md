@@ -417,6 +417,21 @@
 - [x] **Verification:** Build verified successful (✓ 11 routes generated). All WORKPLAN tasks completed. Standing by for new directives from Tommaso.
 
 
+*Timestamp: February 15, 2026, 12:33 PM (Europe/Rome)*
+- [x] **Added Global Search Overlay** - New Cmd+K search modal for dashboard with:
+  - Search across pages (Home, Dashboard, Squad, Pipeline, Archive, Settings)
+  - Quick actions (New Squad, Deploy, Export Data)
+  - Keyboard navigation (↑↓ to navigate, Enter to select, Esc to close)
+  - Animated open/close transitions with Anime.js
+  - Search button added to dashboard header with ⌘K hint
+
+---
+
 *Timestamp: February 15, 2026, 11:33 AM (Europe/Rome)*
 - [x] **Verification:** Build verified successful (✓ 11 routes generated). All WORKPLAN tasks completed. Standing by for new directives from Tommaso.
+
+---
+
+*Timestamp: February 15, 2026, 1:38 PM (Europe/Rome)*
+- [x] **Verification:** Build verified successful (✓ 11 routes generated). All Directives tasks complete. Recent additions: Global Search Overlay (Cmd+K), NotificationCenter, Dashboard Settings, ActivityTimeline, CookieConsent, Lazy Loading widgets, WebGL particles, Command Palette, ContactSection, QuickStartSection. Autopilot standing by for new directives from Tommaso.
 
