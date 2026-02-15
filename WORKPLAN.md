@@ -444,5 +444,5 @@
 
 ---
 
-*Timestamp: February 15, 2026, 7:45 PM (Europe/Rome)*
-- [x] **Verification:** Build verified successful (✓ 11 routes generated). All WORKPLAN tasks complete. Autopilot standing by for new directives from Tommaso.
+*Timestamp: February 15, 2026, 8:47 PM (Europe/Rome)*
+- [x] **Added BookmarksWidget** - New dashboard widget with quick-access bookmarks for navigation (Home, Dashboard, Squad, Pipeline, Settings) and actions (New Squad, Deploy, Export). Includes Anime.js staggered animations, lazy loading, and "+ Add" button for future customization.

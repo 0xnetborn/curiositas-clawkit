@@ -18,6 +18,7 @@ import LazyWidget, {
   LazyNotificationCenter,
   LazySearchFilterWidget,
   LazyActivityTimelineWidget,
+  LazyBookmarksWidget,
   WidgetSkeleton
 } from '@/components/LazyWidget';
 
@@ -218,6 +219,11 @@ export default function DashboardPage() {
                 };
                 navMap[id]?.();
               }} />
+            </LazyWidget>
+
+            {/* Bookmarks Widget - Lazy Loaded */}
+            <LazyWidget fallback={<WidgetSkeleton type="default" height="h-48" />}>
+              <LazyBookmarksWidget />
             </LazyWidget>
 
             {/* Activity Timeline Widget - Lazy Loaded */}
