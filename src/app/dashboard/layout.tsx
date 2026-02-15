@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import CookieConsentBanner from '@/components/CookieConsentBanner';
 import SearchOverlay from '@/components/dashboard/SearchOverlay';
+import Breadcrumb from '@/components/Breadcrumb';
 
 export default function DashboardLayout({
   children,
@@ -122,11 +123,12 @@ export default function DashboardLayout({
         
         {/* Header */}
         <header className="h-16 border-b border-white/5 flex items-center justify-between px-8 bg-black/20 backdrop-blur-sm">
-          <div className="flex items-center gap-2 text-xs font-mono text-white/40">
-            <span>WORKSPACE</span>
-            <span>/</span>
-            <span className="text-white uppercase">{pathname.split('/').pop() || 'DASHBOARD'}</span>
-          </div>
+          <Breadcrumb 
+            items={pathname.split('/').filter(Boolean).slice(1).map((segment, idx, arr) => ({
+              label: segment.toUpperCase(),
+              href: idx < arr.length - 1 ? '/' + arr.slice(0, idx + 1).join('/') : undefined
+            }))} 
+          />
           <div className="flex items-center gap-4">
             <button
               onClick={() => setSearchOpen(true)}
