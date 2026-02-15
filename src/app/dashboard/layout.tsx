@@ -2,7 +2,9 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import CookieConsentBanner from '@/components/CookieConsentBanner';
+import SearchOverlay from '@/components/dashboard/SearchOverlay';
 
 export default function DashboardLayout({
   children,
@@ -18,6 +20,20 @@ export default function DashboardLayout({
     { name: 'ARCHIVE', path: '/dashboard/archive', icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z polyline points="14 2 14 8 20 8"' },
     { name: 'SETTINGS', path: '/dashboard/settings', icon: 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z' },
   ];
+
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  // Keyboard shortcut for search (Cmd/Ctrl + K)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <div className="flex h-screen bg-black text-white overflow-hidden font-sans selection:bg-teal-500/30">
@@ -112,6 +128,17 @@ export default function DashboardLayout({
             <span className="text-white uppercase">{pathname.split('/').pop() || 'DASHBOARD'}</span>
           </div>
           <div className="flex items-center gap-4">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-white/60 hover:bg-white/10 hover:text-white transition-all"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35" />
+              </svg>
+              <span>Search</span>
+              <kbd className="ml-1 px-1.5 py-0.5 bg-white/10 rounded text-[10px]">⌘K</kbd>
+            </button>
             <div className="flex items-center gap-2 px-3 py-1 bg-teal-500/5 border border-teal-500/20 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />
               <span className="text-[10px] font-mono text-teal-500 tracking-wider">SYSTEM OPTIMAL</span>
@@ -123,6 +150,7 @@ export default function DashboardLayout({
         <main className="flex-1 overflow-auto p-8">
           {children}
           <CookieConsentBanner />
+          <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
         </main>
       </div>
     </div>
